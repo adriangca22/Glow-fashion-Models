@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glow Fashion Models - Agencia de Modelos</title>
+  
+  <!-- Fuentes de Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Iconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tu archivo CSS externo -->
+  <link rel="stylesheet" href="estilos.css">
+  <!-- o si está en una carpeta: <link rel="stylesheet" href="css/estilos.css"> -->
+</head>
+<body>
+  <!-- Header -->
+  <!-- Header - CÓDIGO CORRECTO -->
+<header class="header">
+  <nav class="navbar">
+    <div class="logo">
+      <img src="LOGO.png" alt="Logo de GLOW Fashion Models">
+    </div>
+    <!-- CAMBIO: Usa nav-links para escritorio, NO mobile-nav-links -->
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="modelos.html">Modelos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contacto.html" class="btn-primary">Únete Ahora</a>
+    </div>
+    <button class="hamburger" id="hamburger-btn" aria-label="Menú de navegación">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+  <!-- Menú móvil - Este SÍ usa mobile-nav-links -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="active">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="modelos.html">Modelos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <a href="contacto.html" class="btn-primary mobile-cta">Únete Ahora</a>
+  </div>
+</header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
+    <div class="stars-container">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ Agencia de Modelos Premium ✦</div>
+      <h1 class="hero-title">
+        <span class="title-line">GLOW</span>
+        <span class="title-line gold">FASHION</span>
+        <span class="title-line">MODELS</span>
+      </h1>
+      <p class="hero-subtitle">Donde el talento brilla y las carreras despegan</p>
+      <div class="hero-buttons">
+        <a href="#servicios" class="btn-primary">Descubre Más</a>
+        <a href="#modelos" class="btn-secondary">Ver Modelos</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="nosotros" class="about">
+    <div class="section-decorations">
+      <div class="glow-orb glow-orb-1"></div>
+      <div class="glow-orb glow-orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images">
+          <div class="about-img main-img">
+            <img src="model.jpg" alt="Modelo profesional">
+          </div>
+        </div>
+        <div class="about-content">
+          <span class="section-tag">Sobre Nosotros</span>
+          <h2 class="section-title">Somos la agencia que <span class="gold">transforma</span> el potencial en presencia</h2>
+          <p class="about-text">Descubre la próxima generación de modelos que están redefiniendo la moda. Con más de 15 años de experiencia, hemos lanzado las carreras de más de 1000 modelos en todo el mundo.</p>
+          <div class="about-features">
+            <div class="feature">
+              <div class="feature-icon">✦</div>
+              <span>Formación Profesional</span>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">✦</div>
+              <span>Conexiones Globales</span>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">✦</div>
+              <span>Desarrollo de Carrera</span>
+            </div>
+          </div>
+          <a href="#contacto" class="btn-primary">Conócenos</a>
+        </div>
+        <div class="about-images-right">
+          <div class="about-img-stacked top-img">
+            <img src="FOTO-3.png" alt="Modelo con abrigo de piel">
+          </div>
+          <div class="about-img-stacked bottom-img">
+            <img src="FOTO-2.png" alt="Modelo en vestido rojo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlight Cards Section -->
+  <section class="highlight-cards">
+    <div class="floating-stars">
+      <span class="floating-star">✦</span>
+      <span class="floating-star">✦</span>
+      <span class="floating-star">✦</span>
+      <span class="floating-star">✦</span>
+      <span class="floating-star">✦</span>
+    </div>
+    <div class="container">
+      <div class="highlight-grid">
+        <div class="highlight-card">
+          <img src="FOTO-5.png" alt="Modelos graduados">
+          <div class="highlight-overlay">
+            <span class="highlight-number">+ 50</span>
+            <span class="highlight-text">MODELOS GRADUADOS</span>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <img src="FOTO-6.png" alt="Años de experiencia">
+          <div class="highlight-overlay">
+            <span class="highlight-number">+ 15</span>
+            <span class="highlight-text">AÑOS DE EXPERIENCIA EN MODELAJE</span>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <img src="FOTO-7.png" alt="Clases disponibles">
+          <div class="highlight-overlay">
+            <span class="highlight-number">+ 10</span>
+            <span class="highlight-text">CLASES QUE CONFORMAN NUESTRO PROGRAMA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Classes Showcase Section -->
+  <section id="servicios" class="classes-showcase">
+    <div class="classes-content">
+    <div class="classes-text">
+        <p>
+            <span style="font-size: 1.5em; font-weight: bold;">
+                Mira todas las formas de brillar
+            </span> 
+             <br> de nuestros alumnos.
+        </p>
+        
+       
+        
+        <p>Comprende todo lo que implica nuestra enseñanza</p>
+        <a href="#contacto" class="btn-primary">CLASES</a>
+    </div>
+    <div class="classes-image">
+        <img src="FOTO-4.png" alt="Modelo destacada">
+    </div>
+</div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-overlay"></div>
+    <div class="shimmer-waves">
+      <div class="shimmer-wave"></div>
+      <div class="shimmer-wave"></div>
+    </div>
+    <div class="container">
+      <div class="cta-content">
+        <h2>¿Listo para brillar en el mundo de la moda?</h2>
+        <p>Únete a la agencia líder y transforma tu pasión en una carrera exitosa</p>
+        <div class="cta-cards">
+          <div class="cta-card">
+            <div class="cta-card-icon">★★★</div>
+            <h4>¿Quieres ser modelo?</h4>
+            <p>Queremos conocer tu don único</p>
+            <a href="#contacto" class="btn-secondary">Postula Ahora</a>
+          </div>
+          <div class="cta-card">
+            <div class="cta-card-icon">★★★</div>
+            <h4>¿Eres una marca?</h4>
+            <p>Encuentra la inspiración perfecta</p>
+            <a href="#contacto" class="btn-secondary">Ver Roster</a>
+          </div>
+          <div class="cta-card">
+            <div class="cta-card-icon">★★★</div>
+            <h4>¿Buscas formación?</h4>
+            <p>Conoce nuestros programas</p>
+            <a href="#contacto" class="btn-secondary">Ver Clases</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contacto" class="contact">
+    <div class="contact-decorations">
+      <div class="corner-sparkle top-left">✦</div>
+      <div class="corner-sparkle top-right">✦</div>
+      <div class="corner-sparkle bottom-left">✦</div>
+      <div class="corner-sparkle bottom-right">✦</div>
+    </div>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-tag">Contacto</span>
+          <h2 class="section-title">Comienza tu <span class="gold">transformación</span></h2>
+          <p>Estamos listos para ayudarte a alcanzar tus sueños en el mundo de la moda.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <span>Av. Principal 1234, Ciudad</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <span>info@glowfashion.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📱</span>
+              <span>+1 234 567 890</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">Facebook</a>
+            <a href="#" class="social-link">TikTok</a>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Tu email" required>
+          </div>
+          <div class="form-group">
+            <select required>
+              <option value="">¿En qué estás interesado?</option>
+              <option value="modelo">Quiero ser modelo</option>
+              <option value="marca">Soy una marca</option>
+              <option value="clases">Clases de modelaje</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Tu mensaje" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-glow-line"></div>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-text">GLOW</span>
+            <span class="logo-sub">Fashion Models</span>
+          </div>
+          <p>Transformando el potencial en presencia desde 2009.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Enlaces</h4>
+          <a href="#inicio">Inicio</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#modelos">Modelos</a>
+        </div>
+        <div class="footer-links">
+          <h4>Servicios</h4>
+          <a href="#">Casting</a>
+          <a href="#">Formación</a>
+          <a href="#">Book Profesional</a>
+          <a href="#">Eventos</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Glow Fashion Models. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Menú hamburguesa funcional
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-cta');
+
+    // Toggle menú
+    hamburgerBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        hamburgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    // Cerrar menú al hacer scroll
+    window.addEventListener('scroll', function() {
+      if (mobileMenu.classList.contains('active')) {
+        hamburgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+  </script>
+</body>
+</html>
+
+<style>
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
