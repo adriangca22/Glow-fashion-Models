@@ -7,16 +7,245 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* Estilos adicionales para las mejoras */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr 1.5fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    
+    .contact-image {
+      height: 100%;
+      min-height: 450px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      position: relative;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: fadeInLeft 0.8s ease-out forwards;
+    }
+    
+    .contact-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s ease;
+    }
+    
+    .contact-image:hover img {
+      transform: scale(1.03);
+    }
+    
+    .contact-info-box, .contact-form {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .contact-form {
+      animation-delay: 0.2s;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Iconos para redes sociales en la sección de contacto */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d4af37;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .social-btn:hover {
+      background: #d4af37;
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    /* Efecto para el botón de envío */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+    }
+    
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+    
+    .btn-primary:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+    
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(50, 50);
+        opacity: 0;
+      }
+    }
+    
+    /* Mejorando los ítems de contacto */
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      color: #d4af37;
+      flex-shrink: 0;
+    }
+    
+    /* Animación para los ítems de contacto */
+    .contact-item {
+      opacity: 0;
+      transform: translateX(-10px);
+      animation: slideInRight 0.6s ease-out forwards;
+    }
+    
+    .contact-item:nth-child(1) { animation-delay: 0.1s; }
+    .contact-item:nth-child(2) { animation-delay: 0.2s; }
+    .contact-item:nth-child(3) { animation-delay: 0.3s; }
+    .contact-item:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes slideInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Estilos para el formulario (más grande) */
+    .contact-form {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.9rem;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #d4af37;
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .contact-grid {
+        grid-template-columns: 1fr 0.9fr 1.6fr;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .contact-image {
+        min-height: 350px;
+        order: -1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .contact-form {
+        padding: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <nav class="navbar">
       <div class="logo">
-        <a href="index.html">
-          <span class="logo-text">GLOW</span>
-          <span class="logo-sub">Fashion Models</span>
-        </a>
+        <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
       </div>
       <ul class="nav-links">
         <li><a href="index.html">Inicio</a></li>
@@ -99,21 +328,32 @@
             <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
+        
+        <!-- Espacio para la imagen profesional (más pequeña) -->
+        <div class="contact-image">
+          <img src="img/foto12.jpg">
+          <div class="image-overlay"></div>
+        </div>
 
+        <!-- Formulario (más grande) -->
         <form class="contact-form">
           <h2>Envíanos un <span class="gold">Mensaje</span></h2>
+          
           <div class="form-group">
             <label for="nombre">Nombre completo</label>
             <input type="text" id="nombre" placeholder="Tu nombre" required>
           </div>
+          
           <div class="form-group">
             <label for="email">Correo electrónico</label>
             <input type="email" id="email" placeholder="Tu email" required>
           </div>
+          
           <div class="form-group">
             <label for="telefono">Teléfono</label>
             <input type="tel" id="telefono" placeholder="Tu teléfono">
           </div>
+          
           <div class="form-group">
             <label for="interes">¿En qué estás interesado?</label>
             <select id="interes" required>
@@ -124,11 +364,15 @@
               <option value="otro">Otro</option>
             </select>
           </div>
+          
           <div class="form-group">
             <label for="mensaje">Mensaje</label>
             <textarea id="mensaje" placeholder="Tu mensaje" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn-primary full-width">Enviar Mensaje</button>
+          
+          <button type="submit" class="btn-primary full-width">
+            <i class="fas fa-paper-plane"></i> ENVIAR MENSAJE
+          </button>
         </form>
       </div>
     </div>
@@ -140,9 +384,8 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-text">GLOW</span>
-            <span class="logo-sub">Fashion Models</span>
+          <div class="logo logo-footer">
+            <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
           </div>
           <p>Transformando el potencial en presencia desde 2009.</p>
         </div>
@@ -162,5 +405,132 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Script para mejorar la interactividad del formulario
+    document.addEventListener('DOMContentLoaded', function() {
+      // Efecto de validación en tiempo real
+      const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+      
+      formInputs.forEach(input => {
+        // Validación al perder el foco
+        input.addEventListener('blur', function() {
+          if (this.checkValidity() || this.value === '') {
+            this.classList.remove('invalid');
+          } else {
+            this.classList.add('invalid');
+          }
+        });
+      });
+      
+      // Animación para el envío del formulario
+      const contactForm = document.querySelector('.contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Validar todos los campos requeridos
+          const requiredFields = this.querySelectorAll('[required]');
+          let isValid = true;
+          
+          requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+              field.classList.add('invalid');
+              isValid = false;
+            } else {
+              field.classList.remove('invalid');
+            }
+          });
+          
+          if (!isValid) {
+            // Agitar el formulario si hay errores
+            this.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+              this.style.animation = '';
+            }, 500);
+            return;
+          }
+          
+          // Si todo está bien, proceder con el envío
+          const submitBtn = this.querySelector('.btn-primary');
+          const originalText = submitBtn.innerHTML;
+          
+          // Efecto de carga
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+          submitBtn.disabled = true;
+          
+          // Simulación de envío
+          setTimeout(() => {
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> ¡Mensaje Enviado!';
+            submitBtn.classList.add('success');
+            
+            // Reset después de 3 segundos
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('success');
+              contactForm.reset();
+              
+              // Animación de confirmación
+              const confirmation = document.createElement('div');
+              confirmation.className = 'confirmation-message';
+              confirmation.innerHTML = '<i class="fas fa-check-circle"></i> <span>Tu mensaje ha sido enviado exitosamente. Te contactaremos pronto.</span>';
+              confirmation.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #d4af37;
+                color: #000;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                z-index: 1000;
+                animation: slideInRight 0.5s ease-out;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+              `;
+              
+              document.body.appendChild(confirmation);
+              
+              setTimeout(() => {
+                confirmation.style.animation = 'slideOutRight 0.5s ease-out forwards';
+                setTimeout(() => confirmation.remove(), 500);
+              }, 3000);
+            }, 3000);
+          }, 1500);
+        });
+      }
+      
+      // Agregar animación shake
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+          20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        @keyframes slideOutRight {
+          to {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }
+        
+        .form-group input.invalid,
+        .form-group select.invalid,
+        .form-group textarea.invalid {
+          border-color: #ff4757;
+          box-shadow: 0 0 0 2px rgba(255, 71, 87, 0.2);
+        }
+        
+        .btn-primary.success {
+          background: #27ae60;
+          border-color: #27ae60;
+        }
+      `;
+      document.head.appendChild(style);
+    });
+  </script>
 </body>
 </html>

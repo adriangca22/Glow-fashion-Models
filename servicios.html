@@ -7,16 +7,1031 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* ========== SERVICIOS PAGE STYLES ========== */
+    
+    /* Hero Section con imagen de fondo - estilo similar al index */
+    .servicios-hero {
+      min-height: 70vh;
+      background-color: #0d0d0d;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .servicios-hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px 60px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      width: 100%;
+    }
+    
+    .servicios-hero-content {
+      flex: 1;
+      max-width: 550px;
+    }
+    
+    .servicios-hero-content .label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: #c9a227;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .servicios-hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: #c9a227;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    
+    .servicios-hero-content p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+    
+    .servicios-hero-content .btn-servicios {
+      display: inline-block;
+      background: transparent;
+      color: #c9a227;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 15px 35px;
+      border: 1px solid #c9a227;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .servicios-hero-content .btn-servicios:hover {
+      background: #c9a227;
+      color: #0d0d0d;
+    }
+    
+    .servicios-hero-image {
+      flex: 1;
+      max-width: 600px;
+      position: relative;
+    }
+    
+    .servicios-hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      animation: floatImage 6s ease-in-out infinite;
+    }
+    
+    @keyframes floatImage {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    
+    /* Barra dorada más suave y elegante */
+    .seccion-marcas-header {
+      background: linear-gradient(135deg, #b8965c 0%, #d4b87a 50%, #b8965c 100%);
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .seccion-marcas-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    }
+    
+    .seccion-marcas-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.2em;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    
+    .seccion-marcas-header p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(30, 30, 30, 0.85);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    /* Colores de servicio más suaves */
+    .servicios-alternados {
+      background: #0d0d0d;
+      padding: 0;
+    }
+    
+    .servicio-row {
+      display: flex;
+      align-items: stretch;
+      min-height: 500px;
+      position: relative;
+    }
+    
+    .servicio-row.reverse {
+      flex-direction: row-reverse;
+    }
+    
+    .servicio-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 80px;
+      position: relative;
+    }
+    
+    .servicio-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(45deg, transparent 40%, rgba(185, 150, 92, 0.08) 50%, transparent 60%),
+        linear-gradient(-45deg, transparent 40%, rgba(185, 150, 92, 0.08) 50%, transparent 60%);
+      pointer-events: none;
+    }
+    
+    .servicio-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #c9a227;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+    }
+    
+    .servicio-content .subtitulo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: #c9a227;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    
+    .servicio-content p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      max-width: 450px;
+    }
+    
+    .servicio-images {
+      flex: 1;
+      display: flex;
+      gap: 15px;
+      padding: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .servicio-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.8);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .servicio-img-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 40%, rgba(201, 162, 39, 0.1) 50%, transparent 60%);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    
+    .servicio-img-wrapper:hover::before {
+      opacity: 1;
+      animation: shimmerEffect 2s ease-in-out infinite;
+    }
+    
+    .servicio-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: brightness(0.9);
+    }
+    
+    .servicio-img-wrapper:hover img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+    
+    /* Efecto de borde dorado al hacer hover */
+    .servicio-img-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid transparent;
+      transition: all 0.4s ease;
+    }
+    
+    .servicio-img-wrapper:hover::after {
+      border-color: rgba(201, 162, 39, 0.4);
+      box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
+    }
+    
+    .servicio-img-wrapper.large {
+      width: 280px;
+      height: 380px;
+    }
+    
+    .servicio-img-wrapper.small {
+      width: 200px;
+      height: 280px;
+    }
+    
+    @keyframes shimmerEffect {
+      0%, 100% {
+        background-position: -200% center;
+      }
+      50% {
+        background-position: 200% center;
+      }
+    }
+    
+    /* Tarjeta dorada con colores más suaves */
+    .seccion-modelos {
+      background: linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .seccion-modelos::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 10% 20%, rgba(201, 162, 39, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(201, 162, 39, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    /* Partículas decorativas */
+    .seccion-modelos::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.02) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    
+    .modelos-card {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, #151515 0%, #0d0d0d 100%);
+      border-radius: 24px;
+      padding: 60px 50px;
+      position: relative;
+      border: 1px solid rgba(201, 162, 39, 0.15);
+      box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .modelos-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.5), transparent);
+    }
+    
+    .modelos-card-header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    .modelos-card-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #ffffff;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .modelos-card-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c9a227, transparent);
+    }
+    
+    .modelos-card-header .subtitulo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: #c9a227;
+      letter-spacing: 0.15em;
+      margin-top: 15px;
+    }
+    
+    .modelos-card-header p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 20px;
+      line-height: 1.7;
+    }
+    
+    .modelos-servicios-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .modelo-servicio-item {
+      display: flex;
+      align-items: stretch;
+      background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 140px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    
+    .modelo-servicio-item:nth-child(1) { animation: fadeInLeft 0.6s ease 0.2s forwards; }
+    .modelo-servicio-item:nth-child(2) { animation: fadeInRight 0.6s ease 0.4s forwards; }
+    .modelo-servicio-item:nth-child(3) { animation: fadeInLeft 0.6s ease 0.6s forwards; }
+    .modelo-servicio-item:nth-child(4) { animation: fadeInRight 0.6s ease 0.8s forwards; }
+    
+    .modelo-servicio-item.reverse {
+      flex-direction: row-reverse;
+      transform: translateX(30px);
+    }
+    
+    .modelo-servicio-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: rgba(201, 162, 39, 0.3);
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(201, 162, 39, 0.1);
+    }
+    
+    .modelo-servicio-content {
+      flex: 1;
+      padding: 30px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .modelo-servicio-content h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+    
+    .modelo-servicio-item:hover .modelo-servicio-content h4 {
+      color: #c9a227;
+    }
+    
+    .modelo-servicio-content p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.6;
+      max-width: 450px;
+      transition: color 0.3s ease;
+    }
+    
+    .modelo-servicio-item:hover .modelo-servicio-content p {
+      color: rgba(255, 255, 255, 0.75);
+    }
+    
+    /* Nuevo diseño de imagen - fondo negro transparente */
+    .modelo-servicio-img {
+      width: 200px;
+      height: 160px;
+      background: rgba(0, 0, 0, 0.8);
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    
+    .modelo-servicio-img::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(201, 162, 39, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+    
+    .modelo-servicio-item:hover .modelo-servicio-img::before {
+      opacity: 1;
+    }
+    
+    .modelo-servicio-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+      filter: brightness(0.9);
+    }
+    
+    .modelo-servicio-item:hover .modelo-servicio-img img {
+      transform: scale(1.1);
+      filter: brightness(1);
+    }
+    
+    /* Línea decorativa dorada en hover */
+    .modelo-servicio-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #c9a227, #ddc477);
+      transition: width 0.4s ease;
+      z-index: 2;
+    }
+    
+    .modelo-servicio-item:hover .modelo-servicio-img::after {
+      width: 100%;
+    }
+    
+    /* Botón Roster rediseñado */
+    .roster-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .btn-roster {
+      display: inline-block;
+      background: transparent;
+      color: #c9a227;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 18px 50px;
+      border: 1px solid #c9a227;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    
+    .btn-roster::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .btn-roster:hover {
+      background: #c9a227;
+      color: #0d0d0d;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
+    }
+    
+    .btn-roster:hover::before {
+      left: 100%;
+    }
+    
+    /* CTA Final */
+    .cta-servicios {
+      background: linear-gradient(135deg, #151515 0%, #0a0a0a 100%);
+      padding: 80px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    }
+    
+    .cta-servicios h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+      letter-spacing: 0.05em;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .cta-servicios h2 .gold {
+      color: #c9a227;
+      font-style: italic;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .cta-servicios h2 .gold::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #c9a227, transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s ease;
+    }
+    
+    .cta-servicios h2:hover .gold::after {
+      transform: scaleX(1);
+    }
+    
+    .cta-servicios p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    
+    .cta-servicios .btn-primary {
+      display: inline-block;
+      background: #c9a227;
+      color: #0d0d0d;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 18px 45px;
+      border: 1px solid #c9a227;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease 0.4s both;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-servicios .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .cta-servicios .btn-primary:hover {
+      background: transparent;
+      color: #c9a227;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(201, 162, 39, 0.3);
+    }
+    
+    .cta-servicios .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    /* ========== MEDIA QUERIES PARA RESPONSIVE ========== */
+    
+    /* Tablet (768px y menos) */
+    @media (max-width: 768px) {
+      /* Hero Section Responsive */
+      .servicios-hero {
+        min-height: auto;
+      }
+      
+      .servicios-hero-container {
+        flex-direction: column;
+        padding: 100px 30px 60px;
+        gap: 40px;
+      }
+      
+      .servicios-hero-content {
+        max-width: 100%;
+        text-align: center;
+      }
+      
+      .servicios-hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .servicios-hero-image {
+        max-width: 100%;
+      }
+      
+      /* Header de Marcas */
+      .seccion-marcas-header h2 {
+        font-size: 1.1rem;
+      }
+      
+      .seccion-marcas-header p {
+        font-size: 0.85rem;
+      }
+      
+      /* Servicios Alternados Responsive */
+      .servicio-row {
+        flex-direction: column;
+        min-height: auto;
+      }
+      
+      .servicio-row.reverse {
+        flex-direction: column;
+      }
+      
+      .servicio-content {
+        padding: 50px 30px;
+        text-align: center;
+        align-items: center;
+      }
+      
+      .servicio-content h3 {
+        font-size: 1.8rem;
+      }
+      
+      .servicio-content p {
+        max-width: 100%;
+        font-size: 0.95rem;
+      }
+      
+      .servicio-images {
+        padding: 0 30px 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .servicio-img-wrapper.large,
+      .servicio-img-wrapper.small {
+        width: 45%;
+        min-width: 150px;
+        height: 250px;
+      }
+      
+      /* Sección Modelos Responsive */
+      .seccion-modelos {
+        padding: 60px 20px;
+      }
+      
+      .modelos-card {
+        padding: 40px 25px;
+        border-radius: 16px;
+      }
+      
+      .modelos-card-header h2 {
+        font-size: 1.8rem;
+        letter-spacing: 0.1em;
+      }
+      
+      .modelos-card-header p {
+        font-size: 0.95rem;
+      }
+      
+      .modelo-servicio-item {
+        flex-direction: column !important;
+        min-height: auto;
+      }
+      
+      .modelo-servicio-item.reverse {
+        flex-direction: column !important;
+      }
+      
+      .modelo-servicio-img {
+        width: 100%;
+        height: 200px;
+        order: -1;
+      }
+      
+      .modelo-servicio-content {
+        text-align: center;
+        padding: 25px 20px;
+      }
+      
+      .modelo-servicio-content h4 {
+        font-size: 1.2rem;
+      }
+      
+      .modelo-servicio-content p {
+        font-size: 0.85rem;
+        max-width: 100%;
+      }
+      
+      .btn-roster {
+        padding: 15px 35px;
+        font-size: 0.85rem;
+        width: 100%;
+      }
+      
+      /* CTA Responsive */
+      .cta-servicios h2 {
+        font-size: 2rem;
+      }
+      
+      .cta-servicios p {
+        font-size: 1rem;
+      }
+      
+      .cta-servicios .btn-primary {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+    
+    /* Móvil (480px y menos) */
+    @media (max-width: 480px) {
+      /* Hero Section Móvil */
+      .servicios-hero-container {
+        padding: 80px 20px 40px;
+      }
+      
+      .servicios-hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .servicios-hero-content p {
+        font-size: 0.95rem;
+      }
+      
+      .servicios-hero-content .btn-servicios {
+        padding: 12px 25px;
+        font-size: 0.8rem;
+        width: 100%;
+        max-width: 250px;
+      }
+      
+      /* Header de Marcas Móvil */
+      .seccion-marcas-header {
+        padding: 25px 15px;
+      }
+      
+      .seccion-marcas-header h2 {
+        font-size: 1rem;
+      }
+      
+      .seccion-marcas-header p {
+        font-size: 0.8rem;
+      }
+      
+      /* Servicios Alternados Móvil */
+      .servicio-content {
+        padding: 40px 20px;
+      }
+      
+      .servicio-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .servicio-content .subtitulo {
+        font-size: 0.8rem;
+      }
+      
+      .servicio-content p {
+        font-size: 0.9rem;
+      }
+      
+      .servicio-images {
+        padding: 0 20px 40px;
+        gap: 10px;
+      }
+      
+      .servicio-img-wrapper.large,
+      .servicio-img-wrapper.small {
+        width: 48%;
+        min-width: 140px;
+        height: 220px;
+      }
+      
+      /* Sección Modelos Móvil */
+      .seccion-modelos {
+        padding: 40px 15px;
+      }
+      
+      .modelos-card {
+        padding: 30px 20px;
+      }
+      
+      .modelos-card-header h2 {
+        font-size: 1.5rem;
+      }
+      
+      .modelos-card-header .subtitulo {
+        font-size: 0.75rem;
+      }
+      
+      .modelos-card-header p {
+        font-size: 0.9rem;
+      }
+      
+      .modelos-servicios-grid {
+        gap: 15px;
+      }
+      
+      .modelo-servicio-img {
+        height: 180px;
+      }
+      
+      .modelo-servicio-content {
+        padding: 20px 15px;
+      }
+      
+      .modelo-servicio-content h4 {
+        font-size: 1.1rem;
+      }
+      
+      .modelo-servicio-content p {
+        font-size: 0.8rem;
+      }
+      
+      .btn-roster {
+        padding: 12px 20px;
+        font-size: 0.8rem;
+      }
+      
+      /* CTA Móvil */
+      .cta-servicios {
+        padding: 60px 15px;
+      }
+      
+      .cta-servicios h2 {
+        font-size: 1.6rem;
+      }
+      
+      .cta-servicios p {
+        font-size: 0.9rem;
+      }
+      
+      .cta-servicios .btn-primary {
+        padding: 15px 30px;
+        font-size: 0.85rem;
+      }
+    }
+    
+    /* Móvil Pequeño (360px y menos) */
+    @media (max-width: 360px) {
+      .servicio-img-wrapper.large,
+      .servicio-img-wrapper.small {
+        width: 100%;
+        max-width: 250px;
+        height: 200px;
+        margin-bottom: 10px;
+      }
+      
+      .servicio-images {
+        flex-direction: column;
+      }
+      
+      .modelo-servicio-img {
+        height: 160px;
+      }
+    }
+    
+    /* Keyframes para animaciones */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: -200% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    @keyframes borderGlow {
+      0%, 100% {
+        box-shadow: 0 0 5px rgba(201, 162, 39, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(201, 162, 39, 0.6);
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <nav class="navbar">
-      <div class="logo">
-        <a href="index.html">
-          <span class="logo-text">GLOW</span>
-          <span class="logo-sub">Fashion Models</span>
-        </a>
+       <div class="logo">
+        <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
       </div>
       <ul class="nav-links">
         <li><a href="index.html">Inicio</a></li>
@@ -46,93 +1061,166 @@
     </div>
   </header>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="page-header-overlay"></div>
-    <div class="container">
-      <span class="section-tag">Lo que ofrecemos</span>
-      <h1 class="page-title">Nuestros <span class="gold">Servicios</span></h1>
-      <p class="page-subtitle">Formación integral para el éxito en la industria de la moda</p>
+  <!-- Hero Section estilo similar al index con espacio para imagen de fondo -->
+  <section class="servicios-hero">
+    <div class="servicios-hero-container">
+      <div class="servicios-hero-content">
+        <span class="label">Nuestros</span>
+        <h1>Servicios</h1>
+        <p>Descubre todas las formas en que podemos impulsar tu carrera o encontrar el talento perfecto para tu proyecto.</p>
+        <a href="#servicios-marcas" class="btn-servicios">Explorar Servicios</a>
+      </div>
+      <div class="servicios-hero-image">
+        <!-- Coloca aquí tu imagen de hero -->
+        <img src="img/cap5.png" alt="Modelo profesional">
+      </div>
     </div>
   </section>
 
-  <!-- Services Content -->
-  <section class="content-section">
-    <div class="container">
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Clases de Pasarela</h3>
-          <p>Aprende las técnicas profesionales para caminar con confianza y elegancia en cualquier pasarela del mundo.</p>
-          <ul class="service-features">
-            <li>Técnicas de caminata</li>
-            <li>Postura y presencia</li>
-            <li>Expresión corporal</li>
-          </ul>
-        </div>
+  <!-- Header Para Marcas -->
+  <section class="seccion-marcas-header" id="servicios-marcas">
+    <h2>Para Marcas, Diseñadores y Clientes</h2>
+    <p>Le ofrecemos un catálogo seleccionado y diverso de talentos listos para elevar su proyecto. Nuestros modelos se especializan en:</p>
+  </section>
 
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Fotografía Profesional</h3>
-          <p>Sesiones fotográficas con los mejores fotógrafos para crear tu book profesional de alta calidad.</p>
-          <ul class="service-features">
-            <li>Book profesional</li>
-            <li>Fotos editoriales</li>
-            <li>Composites</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Desarrollo Personal</h3>
-          <p>Trabajamos en tu desarrollo integral: nutrición, cuidado personal e imagen profesional.</p>
-          <ul class="service-features">
-            <li>Asesoría de imagen</li>
-            <li>Nutrición y fitness</li>
-            <li>Cuidado de la piel</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Casting y Representación</h3>
-          <p>Te conectamos con las mejores marcas y oportunidades en la industria de la moda nacional e internacional.</p>
-          <ul class="service-features">
-            <li>Castings exclusivos</li>
-            <li>Contratos con marcas</li>
-            <li>Representación internacional</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Maquillaje y Styling</h3>
-          <p>Clases de maquillaje profesional y técnicas de styling para eventos y sesiones fotográficas.</p>
-          <ul class="service-features">
-            <li>Maquillaje editorial</li>
-            <li>Tendencias actuales</li>
-            <li>Styling personal</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">✦</div>
-          <h3>Eventos y Desfiles</h3>
-          <p>Participación en los eventos más importantes de la industria de la moda y desfiles exclusivos.</p>
-          <ul class="service-features">
-            <li>Fashion weeks</li>
-            <li>Eventos corporativos</li>
-            <li>Desfiles de temporada</li>
-          </ul>
-        </div>
+  <!-- Servicios Alternados -->
+  <section class="servicios-alternados">
+    
+    <!-- Modelaje de Pasarela -->
+    <div class="servicio-row">
+      <div class="servicio-content">
+        <h3>Modelaje<br>de Pasarela</h3>
+        <span class="subtitulo">(Runway)</span>
+        <p>Profesionales con presencia impactante y técnica impecable para desfiles de alta costura y eventos de moda.</p>
       </div>
-
-      <div class="cta-box">
-        <h2>¿Listo para comenzar tu <span class="gold">transformación</span>?</h2>
-        <p>Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus sueños.</p>
-        <a href="contacto.html" class="btn-primary">Contáctanos</a>
+      <div class="servicio-images">
+        <div class="servicio-img-wrapper large">
+          <img src="img/cap1.png" alt="Modelo de pasarela">
+        </div>
+        <div class="servicio-img-wrapper small">
+          <img src="img/cap2.png" alt="Modelo de pasarela">
+        </div>
       </div>
     </div>
+
+    <!-- Modelaje Editorial -->
+    <div class="servicio-row reverse">
+      <div class="servicio-content">
+        <h3>Modelaje<br>Editorial y<br>Publicitario</h3>
+        <span class="subtitulo">(Print & Commercial)</span>
+        <p>Rostros versátiles para campañas, catálogos y revistas de moda con expresividad única.</p>
+      </div>
+      <div class="servicio-images">
+        <div class="servicio-img-wrapper large">
+          <img src="img/cap3.png" alt="Modelo editorial">
+        </div>
+        <div class="servicio-img-wrapper small">
+          <img src="img/cap4.png" alt="Modelo editorial">
+        </div>
+      </div>
+    </div>
+
+    <!-- Modelaje E-commerce -->
+    <div class="servicio-row">
+      <div class="servicio-content">
+        <h3>Modelaje<br>de E-Commerce<br>y Lookbook</h3>
+        <span class="subtitulo">(Digital)</span>
+        <p>Modelos eficientes y con experiencia en fotografía de producto digital para tiendas online.</p>
+      </div>
+      <div class="servicio-images">
+        <div class="servicio-img-wrapper large">
+          <img src="img/cap6.png" alt="Modelo e-commerce">
+        </div>
+        <div class="servicio-img-wrapper small">
+          <img src="img/cap7.png" alt="Modelo e-commerce">
+        </div>
+      </div>
+    </div>
+
+    <!-- Modelaje Curvy -->
+    <div class="servicio-row reverse">
+      <div class="servicio-content">
+        <h3>Modelaje<br>Curvy, Fitness<br>y Lifestyle</h3>
+        <span class="subtitulo">(Diversidad)</span>
+        <p>Representación diversa para un mercado global e inclusivo que celebra todos los tipos de cuerpo.</p>
+      </div>
+      <div class="servicio-images">
+        <div class="servicio-img-wrapper large">
+          <img src="img/cap8.png" alt="Modelo curvy">
+        </div>
+        <div class="servicio-img-wrapper small">
+          <img src="img/cap 9.png" alt="Modelo lifestyle">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Para Modelos -->
+  <section class="seccion-modelos">
+    <div class="modelos-card">
+      <div class="modelos-card-header">
+        <h2>Para Modelos</h2>
+        <span class="subtitulo">(Representación y Desarrollo)</span>
+        <p>Si eres parte de la familia GLOW, recibirás un soporte 360° para tu carrera:</p>
+      </div>
+      
+      <div class="modelos-servicios-grid">
+        <!-- Gestión de Carrera -->
+        <div class="modelo-servicio-item">
+          <div class="modelo-servicio-content">
+            <h4>Gestión de<br>Carrera</h4>
+            <p>Búsqueda de contratos, negociación de tarifas y gestión de agenda.</p>
+          </div>
+          <div class="modelo-servicio-img">
+            <img src="img/cap1.png" alt="Gestión de carrera">
+          </div>
+        </div>
+
+        <!-- Sesiones Fotográficas -->
+        <div class="modelo-servicio-item reverse">
+          <div class="modelo-servicio-content">
+            <h4>Sesiones<br>Fotográficas</h4>
+            <p>Sesiones de fotos profesionales (polaroids, test shoots y digitals) para mantener un book actualizado y competitivo.</p>
+          </div>
+          <div class="modelo-servicio-img">
+            <img src="img/cap7.png" alt="Sesiones fotográficas">
+          </div>
+        </div>
+
+        <!-- Coaching -->
+        <div class="modelo-servicio-item">
+          <div class="modelo-servicio-content">
+            <h4>Coaching<br>y Formación</h4>
+            <p>Talleres de pasarela, expresión corporal, media training y etiqueta profesional.</p>
+          </div>
+          <div class="modelo-servicio-img">
+            <img src="img/cap3.png" alt="Coaching y formación">
+          </div>
+        </div>
+
+        <!-- Asesoría -->
+        <div class="modelo-servicio-item reverse">
+          <div class="modelo-servicio-content">
+            <h4>Asesoría de<br>Imagen</h4>
+            <p>Guía personalizada en estilismo, nutrición y cuidado personal para proyectar tu mejor versión.</p>
+          </div>
+          <div class="modelo-servicio-img">
+            <img src="img/cap6.png" alt="Asesoría de imagen">
+          </div>
+        </div>
+      </div>
+
+      <div class="roster-container">
+        <a href="contacto.html" class="btn-roster">Solicitar un Roster Personalizado</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="cta-servicios">
+    <h2>¿Listo para comenzar tu <span class="gold">transformación</span>?</h2>
+    <p>Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus sueños.</p>
+    <a href="contacto.html" class="btn-primary">Contáctanos</a>
   </section>
 
   <!-- Footer -->
@@ -141,9 +1229,8 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-text">GLOW</span>
-            <span class="logo-sub">Fashion Models</span>
+          <div class="logo logo-footer">
+            <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
           </div>
           <p>Transformando el potencial en presencia desde 2009.</p>
         </div>
@@ -163,5 +1250,51 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Script básico para menú móvil (si no tienes uno)
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', function() {
+          mobileMenu.classList.toggle('active');
+          hamburgerBtn.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+          });
+        });
+      }
+      
+      // Animación para imágenes al hacer scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+      
+      // Observar imágenes de servicios
+      document.querySelectorAll('.servicio-img-wrapper').forEach(wrapper => {
+        wrapper.style.opacity = '0';
+        wrapper.style.transform = 'translateY(20px)';
+        wrapper.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(wrapper);
+      });
+    });
+  </script>
 </body>
 </html>

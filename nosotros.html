@@ -7,6 +7,874 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* ========== FILOSOFIA SECTION ========== */
+    .filosofia-section {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filosofia-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .filosofia-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+    }
+
+    .filosofia-image {
+      flex: 0 0 400px;
+      position: relative;
+    }
+
+    .filosofia-image-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filosofia-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(20%);
+      transition: all 0.5s ease;
+    }
+
+    .filosofia-image-wrapper:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    .filosofia-image-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.2), transparent);
+      animation: imageShine 4s ease-in-out infinite;
+    }
+
+    @keyframes imageShine {
+      0%, 100% { left: -100%; }
+      50% { left: 150%; }
+    }
+
+    .filosofia-content {
+      flex: 1;
+    }
+
+    .filosofia-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: #fff;
+      margin-bottom: 0;
+      letter-spacing: 8px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .filosofia-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      background: linear-gradient(135deg, #c9a227, #f4d03f, #c9a227);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      animation: fadeInDown 1s ease 0.2s both;
+    }
+
+    .filosofia-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      color: #fff;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease 0.4s both;
+    }
+
+    .filosofia-description {
+      font-family: 'Montserrat', sans-serif;
+      color: #b0b0b0;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .filosofia-description .highlight {
+      color: #c9a227;
+      font-weight: 500;
+    }
+
+    .glow-acronym {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .glow-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      animation: slideInRight 0.8s ease forwards;
+    }
+
+    .glow-item:nth-child(1) { animation-delay: 0.8s; }
+    .glow-item:nth-child(2) { animation-delay: 1s; }
+    .glow-item:nth-child(3) { animation-delay: 1.2s; }
+    .glow-item:nth-child(4) { animation-delay: 1.4s; }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .glow-letter-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 280px;
+    }
+
+    .glow-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: #fff;
+      letter-spacing: 6px;
+    }
+
+    .glow-translation {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: #888;
+      letter-spacing: 2px;
+    }
+
+    .glow-description-box {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(201, 162, 39, 0.05));
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      padding: 15px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: #ccc;
+      line-height: 1.6;
+      max-width: 300px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .glow-description-box:hover {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.25), rgba(201, 162, 39, 0.1));
+      border-color: rgba(201, 162, 39, 0.5);
+      transform: translateX(5px);
+    }
+
+    .glow-description-box::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      width: 20px;
+      height: 2px;
+      background: #c9a227;
+    }
+
+    /* ========== MISION SECTION - MINIMALISTA ========== */
+    .mision-section {
+      background: #0d0d0d;
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mision-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 50px;
+      display: flex;
+      align-items: center;
+      gap: 80px;
+    }
+
+    /* Nueva galería asimétrica minimalista */
+    .mision-gallery {
+      flex: 0 0 500px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      height: 550px;
+    }
+
+    .mision-image-card {
+      position: relative;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    /* Imagen principal ocupa 2 filas */
+    .mision-image-card:first-child {
+      grid-row: span 2;
+    }
+
+    .mision-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mision-image-card:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+
+    /* Línea dorada sutil al hover */
+    .mision-image-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #c9a227;
+      transition: width 0.4s ease;
+    }
+
+    .mision-image-card:hover::after {
+      width: 100%;
+    }
+
+    .mision-content {
+      flex: 1;
+    }
+
+    .mision-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      color: #c9a227;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .mision-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      color: #fff;
+      letter-spacing: 12px;
+      margin-bottom: 35px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .mision-text {
+      font-family: 'Montserrat', sans-serif;
+      color: #888;
+      font-size: 1rem;
+      line-height: 2;
+      margin-bottom: 45px;
+      font-weight: 300;
+    }
+
+    .mision-btn {
+      display: inline-block;
+      padding: 16px 45px;
+      border: 1px solid #c9a227;
+      background: transparent;
+      color: #c9a227;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      text-transform: uppercase;
+    }
+
+    .mision-btn:hover {
+      background: #c9a227;
+      color: #0d0d0d;
+    }
+
+    /* ========== EQUIPO SECTION ========== */
+    .equipo-section {
+      background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .equipo-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(201, 162, 39, 0.4), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(201, 162, 39, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(201, 162, 39, 0.4), transparent),
+        radial-gradient(1px 1px at 160px 120px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(2px 2px at 200px 50px, rgba(201, 162, 39, 0.3), transparent),
+        radial-gradient(1px 1px at 250px 90px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 300px 60px, rgba(201, 162, 39, 0.4), transparent);
+      background-size: 350px 150px;
+      animation: twinkleStars 4s ease-in-out infinite;
+    }
+
+    @keyframes twinkleStars {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .equipo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .equipo-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: #fff;
+      letter-spacing: 12px;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .equipo-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      color: #b0b0b0;
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .equipo-subtitle .gold {
+      color: #c9a227;
+      font-weight: 600;
+    }
+
+    .equipo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .team-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+      overflow: hidden;
+    }
+
+    .team-card:nth-child(1) { animation-delay: 0.2s; }
+    .team-card:nth-child(2) { animation-delay: 0.4s; }
+    .team-card:nth-child(3) { animation-delay: 0.6s; }
+    .team-card:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .golden-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 3px solid #c9a227;
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.05), transparent);
+      transition: all 0.4s ease;
+      z-index: 1;
+    }
+
+    .golden-frame::before,
+    .golden-frame::after {
+      content: '❖';
+      position: absolute;
+      font-size: 1.5rem;
+      color: #c9a227;
+    }
+
+    .golden-frame::before {
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .golden-frame::after {
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .frame-corner {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 3px solid #c9a227;
+    }
+
+    .frame-corner.top-left {
+      top: -5px;
+      left: -5px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .frame-corner.top-right {
+      top: -5px;
+      right: -5px;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .frame-corner.bottom-left {
+      bottom: -5px;
+      left: -5px;
+      border-right: none;
+      border-top: none;
+    }
+
+    .frame-corner.bottom-right {
+      bottom: -5px;
+      right: -5px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .team-card:hover .golden-frame {
+      box-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+      transform: scale(1.02);
+    }
+
+    /* Contenedor de imagen del equipo */
+    .team-image-container {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    .team-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .team-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .team-card:hover .team-info {
+      transform: translateY(0);
+    }
+
+    .team-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .team-position {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      color: #c9a227;
+    }
+
+    /* ========== RESPONSIVE MEDIA QUERIES ========== */
+    
+    /* Tablet grande (1024px y menos) */
+    @media (max-width: 1024px) {
+      .filosofia-container,
+      .mision-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+      }
+      
+      .filosofia-image {
+        flex: none;
+        width: 100%;
+        max-width: 350px;
+      }
+      
+      .mision-gallery {
+        flex: none;
+        width: 100%;
+        max-width: 500px;
+        height: 450px;
+      }
+      
+      .mision-title {
+        font-size: 3.5rem;
+        letter-spacing: 8px;
+      }
+      
+      .filosofia-title {
+        font-size: 3rem;
+      }
+      
+      .filosofia-subtitle {
+        font-size: 3.5rem;
+      }
+      
+      .glow-item {
+        flex-direction: column;
+        text-align: left;
+        align-items: flex-start;
+      }
+      
+      .glow-letter-group {
+        min-width: auto;
+        margin-bottom: 10px;
+      }
+      
+      .glow-description-box {
+        max-width: 100%;
+        margin-left: 20px;
+      }
+      
+      .glow-description-box::before {
+        left: 0;
+        top: -10px;
+        width: 100%;
+        height: 2px;
+      }
+      
+      .equipo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+    
+    /* Tablet (768px y menos) */
+    @media (max-width: 768px) {
+      .filosofia-section,
+      .mision-section,
+      .equipo-section {
+        padding: 60px 0;
+      }
+      
+      .filosofia-container,
+      .mision-container,
+      .equipo-container {
+        padding: 0 20px;
+      }
+      
+      .filosofia-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+      }
+      
+      .filosofia-subtitle {
+        font-size: 2.8rem;
+      }
+      
+      .filosofia-tagline {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+      }
+      
+      .filosofia-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      
+      .glow-letter {
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+      }
+      
+      .glow-translation {
+        font-size: 0.75rem;
+      }
+      
+      .glow-description-box {
+        font-size: 0.85rem;
+        padding: 12px 15px;
+      }
+      
+      .mision-gallery {
+        height: 350px;
+        gap: 8px;
+      }
+      
+      .mision-title {
+        font-size: 2.8rem;
+        letter-spacing: 6px;
+      }
+      
+      .mision-text {
+        font-size: 0.95rem;
+        line-height: 1.8;
+      }
+      
+      .mision-btn {
+        padding: 14px 35px;
+        font-size: 0.75rem;
+      }
+      
+      .equipo-title {
+        font-size: 2.5rem;
+        letter-spacing: 8px;
+      }
+      
+      .equipo-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 40px;
+      }
+    }
+    
+    /* Móvil (480px y menos) */
+    @media (max-width: 480px) {
+      .filosofia-title {
+        font-size: 2rem;
+        letter-spacing: 3px;
+      }
+      
+      .filosofia-subtitle {
+        font-size: 2.2rem;
+      }
+      
+      .filosofia-tagline {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+      
+      .filosofia-description {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+      }
+      
+      .glow-acronym {
+        gap: 20px;
+      }
+      
+      .glow-item {
+        gap: 10px;
+      }
+      
+      .glow-letter {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+      }
+      
+      .glow-translation {
+        font-size: 0.7rem;
+      }
+      
+      .glow-description-box {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .mision-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        height: 400px;
+      }
+      
+      .mision-image-card:first-child {
+        grid-row: span 1;
+      }
+      
+      .mision-title {
+        font-size: 2rem;
+        letter-spacing: 4px;
+        margin-bottom: 25px;
+      }
+      
+      .mision-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin-bottom: 30px;
+      }
+      
+      .mision-btn {
+        padding: 12px 30px;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+      }
+      
+      .equipo-title {
+        font-size: 1.8rem;
+        letter-spacing: 6px;
+        margin-bottom: 15px;
+      }
+      
+      .equipo-subtitle {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+      
+      .equipo-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+        gap: 25px;
+      }
+      
+      .team-card {
+        aspect-ratio: 4/3;
+      }
+      
+      .golden-frame {
+        border-width: 2px;
+      }
+      
+      .frame-corner {
+        width: 20px;
+        height: 20px;
+        border-width: 2px;
+      }
+      
+      .team-image-container {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+    
+    /* Móvil pequeño (360px y menos) */
+    @media (max-width: 360px) {
+      .filosofia-container,
+      .mision-container,
+      .equipo-container {
+        padding: 0 15px;
+      }
+      
+      .filosofia-title {
+        font-size: 1.8rem;
+      }
+      
+      .filosofia-subtitle {
+        font-size: 2rem;
+      }
+      
+      .mision-gallery {
+        height: 350px;
+      }
+      
+      .mision-title {
+        font-size: 1.8rem;
+      }
+      
+      .equipo-title {
+        font-size: 1.6rem;
+        letter-spacing: 4px;
+      }
+      
+      .glow-description-box::before {
+        display: none;
+      }
+    }
+    
+    /* Ajustes para orientación horizontal en móviles */
+    @media (max-height: 600px) and (orientation: landscape) {
+      .filosofia-section,
+      .mision-section,
+      .equipo-section {
+        padding: 40px 0;
+      }
+      
+      .filosofia-container,
+      .mision-container {
+        flex-direction: row;
+        gap: 30px;
+      }
+      
+      .filosofia-image {
+        flex: 0 0 250px;
+      }
+      
+      .filosofia-title {
+        font-size: 2rem;
+      }
+      
+      .filosofia-subtitle {
+        font-size: 2.5rem;
+      }
+      
+      .mision-gallery {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -14,19 +882,18 @@
     <nav class="navbar">
       <div class="logo">
         <a href="index.html">
-          <span class="logo-text">GLOW</span>
-          <span class="logo-sub">Fashion Models</span>
+          <img src="img/LOGO.png" alt="Glow Fashion Models Logo">
         </a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html" class="active">Nosotros</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="modelos.html">Modelos</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="nosotros.html" class="active">NOSOTROS</a></li>
+        <li><a href="servicios.html">SERVICIOS</a></li>
+        <li><a href="modelos.html">MODELOS</a></li>
+        <li><a href="contacto.html">CONTACTO</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="contacto.html" class="btn-primary">Únete Ahora</a>
+        <a href="contacto.html" class="btn-primary">ÚNETE AHORA</a>
       </div>
       <button class="hamburger" id="hamburger-btn" aria-label="Menú de navegación">
         <span class="hamburger-line"></span>
@@ -36,80 +903,201 @@
     </nav>
     <div class="mobile-menu" id="mobile-menu">
       <ul class="mobile-nav-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html" class="active">Nosotros</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="modelos.html">Modelos</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="nosotros.html" class="active">NOSOTROS</a></li>
+        <li><a href="servicios.html">SERVICIOS</a></li>
+        <li><a href="modelos.html">MODELOS</a></li>
+        <li><a href="contacto.html">CONTACTO</a></li>
       </ul>
-      <a href="contacto.html" class="btn-primary mobile-cta">Únete Ahora</a>
+      <a href="contacto.html" class="btn-primary mobile-cta">ÚNETE AHORA</a>
     </div>
   </header>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="page-header-overlay"></div>
-    <div class="container">
-      <span class="section-tag">Conócenos</span>
-      <h1 class="page-title">Sobre <span class="gold">Nosotros</span></h1>
-      <p class="page-subtitle">Más de 15 años transformando el potencial en presencia</p>
-    </div>
-  </section>
-
-  <!-- About Content -->
-  <section class="content-section">
-    <div class="container">
-      <div class="content-grid">
-        <div class="content-text">
-          <h2>Nuestra <span class="gold">Historia</span></h2>
-          <p>Glow Fashion Models nació en 2009 con una visión clara: descubrir y desarrollar el talento más brillante en el mundo de la moda. Desde entonces, hemos trabajado incansablemente para convertirnos en la agencia de modelos líder en el país.</p>
-          <p>Nuestro equipo de profesionales cuenta con décadas de experiencia combinada en la industria de la moda, fotografía y desarrollo de talento. Hemos lanzado las carreras de más de 1,000 modelos que ahora brillan en pasarelas internacionales.</p>
+  <!-- Filosofia Section -->
+  <section class="filosofia-section">
+    <div class="filosofia-container">
+      <div class="filosofia-image">
+        <div class="filosofia-image-wrapper">
+          <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
+          <img src="img/foto11.png" alt="Modelo Glow Fashion">
         </div>
-        <div class="content-image">
-          <div class="image-placeholder">
-            <span class="placeholder-icon">✦</span>
-            <span>Imagen del equipo</span>
+      </div>
+      
+      <div class="filosofia-content">
+        <h2 class="filosofia-title">NUESTRA</h2>
+        <h3 class="filosofia-subtitle">FILOSOFÍA</h3>
+        <p class="filosofia-tagline">EL PODER DEL GLOW</p>
+        
+        <p class="filosofia-description">
+          En <strong>GLOW FASHION MODELS</strong>, creemos que el verdadero éxito en la moda no solo reside en la belleza, sino en <span class="highlight">la luz interior y la profesionalidad</span> que cada modelo irradia. Nuestro nombre, GLOW, representa:
+        </p>
+        
+        <div class="glow-acronym">
+          <div class="glow-item">
+            <div class="glow-letter-group">
+              <span class="glow-letter">GROWTH</span>
+              <span class="glow-translation">(CRECIMIENTO)</span>
+            </div>
+            <div class="glow-description-box">
+              Fomentamos el desarrollo personal y profesional continuo.
+            </div>
+          </div>
+          
+          <div class="glow-item">
+            <div class="glow-letter-group">
+              <span class="glow-letter">WISDOM</span>
+              <span class="glow-translation">(SABIDURÍA)</span>
+            </div>
+            <div class="glow-description-box">
+              Brindamos mentoría y guía experta en cada paso de su carrera.
+            </div>
+          </div>
+          
+          <div class="glow-item">
+            <div class="glow-letter-group">
+              <span class="glow-letter">LEADERSHIP</span>
+              <span class="glow-translation">(LIDERAZGO)</span>
+            </div>
+            <div class="glow-description-box">
+              Preparamos a nuestros talentos para ser líderes en la industria.
+            </div>
+          </div>
+          
+          <div class="glow-item">
+            <div class="glow-letter-group">
+              <span class="glow-letter">OPPORTUNITY</span>
+              <span class="glow-translation">(OPORTUNIDAD)</span>
+            </div>
+            <div class="glow-description-box">
+              Conectamos a nuestros modelos con las mejores marcas y proyectos.
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="values-section">
-        <h2 class="section-title-center">Nuestros <span class="gold">Valores</span></h2>
-        <div class="values-grid">
-          <div class="value-card">
-            <div class="value-icon">✦</div>
-            <h3>Excelencia</h3>
-            <p>Buscamos la perfección en cada detalle de nuestro trabajo.</p>
+  <!-- Mision Section - MINIMALISTA -->
+  <section class="mision-section">
+    <div class="mision-container">
+      <!-- Galería asimétrica con imagen principal grande -->
+      <div class="mision-gallery">
+        <div class="mision-image-card">
+          <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
+          <img src="img/foto12.jpg" alt="Modelo principal">
+        </div>
+        <div class="mision-image-card">
+          <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
+          <img src="img/foto13.png" alt="Modelo 2">
+        </div>
+        <div class="mision-image-card">
+          <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
+          <img src="img/foto14.png" alt="Modelo 3">
+        </div>
+      </div>
+      
+      <div class="mision-content">
+        <span class="mision-label">Nuestra</span>
+        <h2 class="mision-title">MISIÓN</h2>
+        <p class="mision-text">
+          Impulsar carreras de modelaje con un enfoque integral, ético y de alto rendimiento, asegurando que nuestros talentos no solo se vean bien, sino que también sean profesionales, confiables y representen lo mejor de la moda contemporánea.
+        </p>
+        <a href="servicios.html" class="mision-btn">Ver Servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipo Section -->
+  <section class="equipo-section">
+    <div class="equipo-container">
+      <h2 class="equipo-title">NUESTRO EQUIPO</h2>
+      <p class="equipo-subtitle">
+        Un grupo de profesionales apasionados por la moda y comprometidos con el <span class="gold">éxito de cada modelo</span>.
+      </p>
+      
+      <div class="equipo-grid">
+        <!-- Miembro 1 - Director Creativo -->
+        <div class="team-card">
+          <div class="golden-frame">
+            <div class="frame-corner top-left"></div>
+            <div class="frame-corner top-right"></div>
+            <div class="frame-corner bottom-left"></div>
+            <div class="frame-corner bottom-right"></div>
           </div>
-          <div class="value-card">
-            <div class="value-icon">✦</div>
-            <h3>Integridad</h3>
-            <p>Actuamos con honestidad y transparencia en todo momento.</p>
+          <div class="team-image-container">
+            <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
+            <img class="team-image" src="img/picture (1).jpg" alt="Director Creativo">
+            <div class="team-info">
+              <div class="team-name">Juan Pérez</div>
+              <div class="team-position">Director Creativo</div>
+            </div>
           </div>
-          <div class="value-card">
-            <div class="value-icon">✦</div>
-            <h3>Innovación</h3>
-            <p>Nos mantenemos a la vanguardia de las tendencias de la moda.</p>
+        </div>
+        
+        <!-- Miembro 2 - Manager de Talento -->
+        <div class="team-card">
+          <div class="golden-frame">
+            <div class="frame-corner top-left"></div>
+            <div class="frame-corner top-right"></div>
+            <div class="frame-corner bottom-left"></div>
+            <div class="frame-corner bottom-right"></div>
           </div>
-          <div class="value-card">
-            <div class="value-icon">✦</div>
-            <h3>Compromiso</h3>
-            <p>Nos dedicamos al éxito de cada uno de nuestros modelos.</p>
+          <div class="team-image-container">
+            <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
+            <img class="team-image" src="img/picture (2).jpg" alt="Manager de Talento">
+            <div class="team-info">
+              <div class="team-name">María García</div>
+              <div class="team-position">Manager de Talento</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Miembro 3 - Coordinador de Eventos -->
+        <div class="team-card">
+          <div class="golden-frame">
+            <div class="frame-corner top-left"></div>
+            <div class="frame-corner top-right"></div>
+            <div class="frame-corner bottom-left"></div>
+            <div class="frame-corner bottom-right"></div>
+          </div>
+          <div class="team-image-container">
+            <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
+            <img class="team-image" src="img/picture (3).jpg" alt="Coordinador de Eventos">
+            <div class="team-info">
+              <div class="team-name">Carlos Rodríguez</div>
+              <div class="team-position">Coordinador de Eventos</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Miembro 4 - Estilista Principal -->
+        <div class="team-card">
+          <div class="golden-frame">
+            <div class="frame-corner top-left"></div>
+            <div class="frame-corner top-right"></div>
+            <div class="frame-corner bottom-left"></div>
+            <div class="frame-corner bottom-right"></div>
+          </div>
+          <div class="team-image-container">
+            <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
+            <img class="team-image" src="img/picture (4).jpg" alt="Estilista Principal">
+            <div class="team-info">
+              <div class="team-name">Ana Martínez</div>
+              <div class="team-position">Estilista Principal</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-glow-line"></div>
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-text">GLOW</span>
-            <span class="logo-sub">Fashion Models</span>
+          <div class="logo logo-footer">
+            <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
           </div>
           <p>Transformando el potencial en presencia desde 2009.</p>
         </div>
@@ -128,6 +1116,24 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Mobile menu toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+    
+    // Cerrar menú al hacer clic en enlace
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>

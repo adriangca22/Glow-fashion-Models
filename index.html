@@ -13,45 +13,42 @@
   
   <!-- Tu archivo CSS externo -->
   <link rel="stylesheet" href="estilos.css">
-  <!-- o si está en una carpeta: <link rel="stylesheet" href="css/estilos.css"> -->
 </head>
 <body>
   <!-- Header -->
-  <!-- Header - CÓDIGO CORRECTO -->
-<header class="header">
-  <nav class="navbar">
-    <div class="logo">
-      <img src="LOGO.png" alt="Logo de GLOW Fashion Models">
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="modelos.html">Modelos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="contacto.html" class="btn-primary">Únete Ahora</a>
+      </div>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menú de navegación">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+    <!-- Menú móvil -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="modelos.html">Modelos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <a href="contacto.html" class="btn-primary mobile-cta">Únete Ahora</a>
     </div>
-    <!-- CAMBIO: Usa nav-links para escritorio, NO mobile-nav-links -->
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Inicio</a></li>
-      <li><a href="nosotros.html">Nosotros</a></li>
-      <li><a href="servicios.html">Servicios</a></li>
-      <li><a href="modelos.html">Modelos</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a href="contacto.html" class="btn-primary">Únete Ahora</a>
-    </div>
-    <button class="hamburger" id="hamburger-btn" aria-label="Menú de navegación">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-  </nav>
-  <!-- Menú móvil - Este SÍ usa mobile-nav-links -->
-  <div class="mobile-menu" id="mobile-menu">
-    <ul class="mobile-nav-links">
-      <li><a href="index.html" class="active">Inicio</a></li>
-      <li><a href="nosotros.html">Nosotros</a></li>
-      <li><a href="servicios.html">Servicios</a></li>
-      <li><a href="modelos.html">Modelos</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-    <a href="contacto.html" class="btn-primary mobile-cta">Únete Ahora</a>
-  </div>
-</header>
+  </header>
 
   <!-- Hero Section -->
   <section id="inicio" class="hero">
@@ -95,13 +92,13 @@
       <div class="about-grid">
         <div class="about-images">
           <div class="about-img main-img">
-            <img src="model.jpg" alt="Modelo profesional">
+            <img src="img/model.jpg" alt="Modelo profesional">
           </div>
         </div>
         <div class="about-content">
           <span class="section-tag">Sobre Nosotros</span>
           <h2 class="section-title">Somos la agencia que <span class="gold">transforma</span> el potencial en presencia</h2>
-          <p class="about-text">Descubre la próxima generación de modelos que están redefiniendo la moda. Con más de 15 años de experiencia, hemos lanzado las carreras de más de 1000 modelos en todo el mundo.</p>
+          <p class="about-text">Nuestro equipo de profesionales especializados está dedicado a compartir su experiencia para guiarte en cada paso. Desde la clase de pasarela y foto pose , protocolo y etiqueta , asesoria de imagen, danza , clase de maquillaje , clase dicción, clase para evento coorporativo, secciones de fotos. Cadaa módulo está diseñado para que descubras tu potencial y te conviertas en una profesional.</p>
           <div class="about-features">
             <div class="feature">
               <div class="feature-icon">✦</div>
@@ -120,10 +117,10 @@
         </div>
         <div class="about-images-right">
           <div class="about-img-stacked top-img">
-            <img src="FOTO-3.png" alt="Modelo con abrigo de piel">
+            <img src="img/FOTO-3.jpg" alt="Modelo con abrigo de piel">
           </div>
           <div class="about-img-stacked bottom-img">
-            <img src="FOTO-2.png" alt="Modelo en vestido rojo">
+            <img src="img/FOTO-2.jpg" alt="Modelo en vestido rojo">
           </div>
         </div>
       </div>
@@ -142,21 +139,21 @@
     <div class="container">
       <div class="highlight-grid">
         <div class="highlight-card">
-          <img src="FOTO-5.png" alt="Modelos graduados">
+          <img src="img/FOTO-5.jpg" alt="Modelos graduados">
           <div class="highlight-overlay">
             <span class="highlight-number">+ 50</span>
             <span class="highlight-text">MODELOS GRADUADOS</span>
           </div>
         </div>
         <div class="highlight-card">
-          <img src="FOTO-6.png" alt="Años de experiencia">
+          <img src="img/FOTO-6.jpg" alt="Años de experiencia">
           <div class="highlight-overlay">
             <span class="highlight-number">+ 15</span>
             <span class="highlight-text">AÑOS DE EXPERIENCIA EN MODELAJE</span>
           </div>
         </div>
         <div class="highlight-card">
-          <img src="FOTO-7.png" alt="Clases disponibles">
+          <img src="img/FOTO-7.jpg" alt="Clases disponibles">
           <div class="highlight-overlay">
             <span class="highlight-number">+ 10</span>
             <span class="highlight-text">CLASES QUE CONFORMAN NUESTRO PROGRAMA</span>
@@ -168,24 +165,35 @@
 
   <!-- Classes Showcase Section -->
   <section id="servicios" class="classes-showcase">
+    <div class="stars-container classes-stars">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
     <div class="classes-content">
-    <div class="classes-text">
+      <div class="classes-text">
         <p>
-            <span style="font-size: 1.5em; font-weight: bold;">
-                Mira todas las formas de brillar
-            </span> 
-             <br> de nuestros alumnos.
+          <span style="font-size: 1.5em; font-weight: bold;">
+            Mira todas las formas de brillar
+          </span> 
+          <br> de nuestros alumnos.
         </p>
-        
-       
-        
         <p>Comprende todo lo que implica nuestra enseñanza</p>
         <a href="#contacto" class="btn-primary">CLASES</a>
+      </div>
+      <div class="classes-image">
+        <div class="image-wrapper">
+          <img src="img/FOTO-4.png" alt="Modelo destacada">
+          <div class="image-shine"></div>
+          <div class="image-glow-border"></div>
+        </div>
+      </div>
     </div>
-    <div class="classes-image">
-        <img src="FOTO-4.png" alt="Modelo destacada">
-    </div>
-</div>
   </section>
 
   <!-- CTA Section -->
@@ -223,7 +231,7 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact Section - Iconos FA actualizados -->
   <section id="contacto" class="contact">
     <div class="contact-decorations">
       <div class="corner-sparkle top-left">✦</div>
@@ -238,23 +246,38 @@
           <h2 class="section-title">Comienza tu <span class="gold">transformación</span></h2>
           <p>Estamos listos para ayudarte a alcanzar tus sueños en el mundo de la moda.</p>
           <div class="contact-details">
+            <!-- Icono de ubicacion con FA -->
             <div class="contact-item">
-              <span class="contact-icon">📍</span>
-              <span>Av. Principal 1234, Ciudad</span>
+              <span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+              <span>Houston Trade Center 100 Sharpstown Center, suite 3020 Houston, TX 77036 tercer piso</span>
             </div>
+            <!-- Icono de email con FA -->
             <div class="contact-item">
-              <span class="contact-icon">📧</span>
-              <span>info@glowfashion.com</span>
+              <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+              <span>glowfashionmodels@gmail.com</span>
             </div>
+            <!-- Icono de telefono con FA -->
             <div class="contact-item">
-              <span class="contact-icon">📱</span>
-              <span>+1 234 567 890</span>
+              <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+              <span>+1 346-614-8437</span>
+            </div>
+            <!-- Icono de WhatsApp con FA (verde) -->
+            <div class="contact-item whatsapp-item">
+              <span class="contact-icon whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></span>
+              <a href="https://wa.me/18328013719" target="_blank" rel="noopener noreferrer">+1 832-801-3719</a>
             </div>
           </div>
+          <!-- Redes sociales con iconos FA -->
           <div class="social-links">
-            <a href="#" class="social-link">Instagram</a>
-            <a href="#" class="social-link">Facebook</a>
-            <a href="#" class="social-link">TikTok</a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
           </div>
         </div>
         <form class="contact-form">
@@ -288,10 +311,9 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-text">GLOW</span>
-            <span class="logo-sub">Fashion Models</span>
-          </div>
+        <div class="logo logo-footer">
+  <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models" >
+</div>
           <p>Transformando el potencial en presencia desde 2009.</p>
         </div>
         <div class="footer-links">
@@ -321,14 +343,12 @@
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-cta');
 
-    // Toggle menú
     hamburgerBtn.addEventListener('click', function() {
       this.classList.toggle('active');
       mobileMenu.classList.toggle('active');
       document.body.classList.toggle('menu-open');
     });
 
-    // Cerrar menú al hacer clic en un enlace
     mobileLinks.forEach(link => {
       link.addEventListener('click', function() {
         hamburgerBtn.classList.remove('active');
@@ -337,7 +357,6 @@
       });
     });
 
-    // Cerrar menú al hacer scroll
     window.addEventListener('scroll', function() {
       if (mobileMenu.classList.contains('active')) {
         hamburgerBtn.classList.remove('active');
@@ -348,24 +367,3 @@
   </script>
 </body>
 </html>
-
-<style>
-
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
