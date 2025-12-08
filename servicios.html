@@ -671,11 +671,144 @@
       width: 300px;
       height: 300px;
     }
+
+    /* ========== ESTILOS PARA MENÚ MÓVIL ========== */
+    
+    /* Corregido: el menú móvil ahora usa visibility y pointer-events en lugar de display:none para permitir transiciones */
+    .mobile-menu {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
+      z-index: 9999;
+      padding: 30px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+      transform: translateY(-20px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Corregido: el estado activo ahora muestra el menú correctamente */
+    .mobile-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    
+    .mobile-nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .mobile-nav-links li a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 12px 0;
+      display: block;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-links li a:hover,
+    .mobile-nav-links li a.active {
+      color: #c9a227;
+      padding-left: 10px;
+      border-bottom-color: rgba(201, 162, 39, 0.3);
+    }
+    
+    .mobile-cta {
+      display: block;
+      margin-top: 30px;
+      text-align: center;
+      padding: 15px 30px;
+      background: #c9a227;
+      color: #0d0d0d;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid #c9a227;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-cta:hover {
+      background: transparent;
+      color: #c9a227;
+    }
+    
+    /* Botón hamburguesa animado */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10000;
+    }
+    
+    .hamburger-line {
+      width: 100%;
+      height: 2px;
+      background-color: #c9a227;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    
+    /* Animación del botón hamburguesa cuando está activo */
+    .hamburger.active .hamburger-line:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    
+    .hamburger.active .hamburger-line:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
     
     /* ========== MEDIA QUERIES PARA RESPONSIVE ========== */
     
     /* Tablet (768px y menos) */
     @media (max-width: 768px) {
+      /* Agregando reglas para mostrar hamburger y ocultar menú desktop */
+      .hamburger {
+        display: flex;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .nav-cta {
+        display: none;
+      }
+      
+      .mobile-menu {
+        top: 60px;
+      }
+      /* Fin del cambio */
+      
       /* Hero Section Responsive */
       .servicios-hero {
         min-height: auto;
@@ -963,7 +1096,7 @@
         height: 160px;
       }
     }
-    
+
     /* Keyframes para animaciones */
     @keyframes fadeInUp {
       from {
@@ -1251,24 +1384,58 @@
 
   <script src="script.js"></script>
   <script>
-    // Script básico para menú móvil (si no tienes uno)
     document.addEventListener('DOMContentLoaded', function() {
       const hamburgerBtn = document.getElementById('hamburger-btn');
       const mobileMenu = document.getElementById('mobile-menu');
       
       if (hamburgerBtn && mobileMenu) {
-        hamburgerBtn.addEventListener('click', function() {
-          mobileMenu.classList.toggle('active');
-          hamburgerBtn.classList.toggle('active');
+        // Toggle del menú al hacer clic en hamburguesa
+        hamburgerBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Alternar clases activas
+          const isActive = mobileMenu.classList.contains('active');
+          
+          if (isActive) {
+            mobileMenu.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+            document.body.style.overflow = '';
+          } else {
+            mobileMenu.classList.add('active');
+            hamburgerBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
         });
         
         // Cerrar menú al hacer clic en un enlace
         const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
+        mobileLinks.forEach(function(link) {
           link.addEventListener('click', function() {
             mobileMenu.classList.remove('active');
             hamburgerBtn.classList.remove('active');
+            document.body.style.overflow = '';
           });
+        });
+        
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(event) {
+          if (mobileMenu.classList.contains('active') && 
+              !mobileMenu.contains(event.target) && 
+              !hamburgerBtn.contains(event.target)) {
+            mobileMenu.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        });
+        
+        // Cerrar menú con tecla ESC
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            hamburgerBtn.classList.remove('active');
+            document.body.style.overflow = '';
+          }
         });
       }
       
@@ -1278,8 +1445,8 @@
         rootMargin: '0px 0px -50px 0px'
       };
       
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
@@ -1288,7 +1455,7 @@
       }, observerOptions);
       
       // Observar imágenes de servicios
-      document.querySelectorAll('.servicio-img-wrapper').forEach(wrapper => {
+      document.querySelectorAll('.servicio-img-wrapper').forEach(function(wrapper) {
         wrapper.style.opacity = '0';
         wrapper.style.transform = 'translateY(20px)';
         wrapper.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

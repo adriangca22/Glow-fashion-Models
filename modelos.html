@@ -4,15 +4,470 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Glow Fashion Models - Modelos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* Hero section styles - MEJORADO para centrado perfecto */
+    .hero-models {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      position: relative;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+    
+    /* Efecto de partículas doradas sutiles en el fondo */
+    .particles-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .gold-particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+    }
+    
+    @keyframes float {
+      0%, 100% { 
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+      }
+      50% { 
+        transform: translateY(-20px) scale(1.1);
+        opacity: 0.6;
+      }
+    }
+    
+    /* Efecto de luz de estudio sutil */
+    .studio-light-effect {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 70% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, transparent 30%, rgba(0, 0, 0, 0.8) 70%);
+      z-index: 1;
+      pointer-events: none;
+      animation: lightShift 15s infinite alternate ease-in-out;
+    }
+    
+    @keyframes lightShift {
+      0% {
+        opacity: 0.7;
+        background-position: 0% 0%;
+      }
+      100% {
+        opacity: 1;
+        background-position: 100% 100%;
+      }
+    }
+    
+    /* Patrón de diamantes sutiles en el fondo */
+    .diamond-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(45deg, rgba(212, 175, 55, 0.03) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(212, 175, 55, 0.03) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(212, 175, 55, 0.03) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(212, 175, 55, 0.03) 75%);
+      background-size: 40px 40px;
+      background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+      z-index: 1;
+      opacity: 0.3;
+      pointer-events: none;
+      animation: patternMove 40s linear infinite;
+    }
+    
+    @keyframes patternMove {
+      0% { background-position: 0 0, 0 20px, 20px -20px, -20px 0px; }
+      100% { background-position: 40px 0, 40px 20px, 60px -20px, 20px 0px; }
+    }
+    
+    /* Efecto de borde luminoso sutil */
+    .light-border {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .light-border::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(212, 175, 55, 0.1),
+        rgba(212, 175, 55, 0.05),
+        transparent
+      );
+      animation: rotateBorder 20s linear infinite;
+    }
+    
+    @keyframes rotateBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Contenido del hero (texto) con centrado perfecto */
+    .hero-models .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      transform: translateY(-5%);
+    }
+    
+    .hero-models .subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.3em;
+      color: #d4af37;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-models .subtitle::before {
+      content: '✦';
+    }
+    
+    .hero-models h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 30px;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 2;
+      max-width: 100%;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 10px;
+    }
+    
+    .hero-models h1 .gold {
+      color: #d4af37;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hero-models h1 .gold::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      animation: textGlow 4s infinite linear;
+      z-index: -1;
+    }
+    
+    @keyframes textGlow {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+    
+    .hero-models .description {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: #ddd;
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 60px;
+      font-weight: 500;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
+      letter-spacing: 0.02em;
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .scroll-indicator span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: #d4af37;
+      font-weight: 600;
+    }
+    
+    .scroll-indicator .line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, #d4af37, transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.5; transform: scaleY(0.8); }
+    }
+    
+    /* Talent section header */
+    .talent-header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background: #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .talent-header .tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: #d4af37;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .talent-header .tag::before {
+      content: '✦';
+    }
+    
+    .talent-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      color: #fff;
+      max-width: 800px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 20px;
+    }
+    
+    .talent-header h2 .gold {
+      color: #d4af37;
+    }
+
+    /* Carousel styles */
+    .carousel-section {
+      padding: 60px 0;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+    
+    .carousel-track {
+      display: flex;
+      animation: scroll 40s linear infinite;
+    }
+    
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+    
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .carousel-card {
+      flex-shrink: 0;
+      width: 300px;
+      height: 450px;
+      margin: 0 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .carousel-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .carousel-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* CTA Box */
+    .content-section {
+      padding: 80px 20px;
+      background: #0a0a0a;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .models-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+    
+    .cta-box {
+      background: rgba(20, 20, 20, 0.9);
+      border-radius: 12px;
+      padding: 60px 40px;
+      text-align: center;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .cta-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .cta-box h2 .gold {
+      color: #d4af37;
+    }
+    
+    .cta-box p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      text-align: center;
+    }
+    
+    /* Fondo granulado sutil para toda la página */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .carousel-card {
+        width: 250px;
+        height: 375px;
+      }
+      
+      .hero-models h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        line-height: 1.2;
+      }
+      
+      .hero-models .description {
+        font-size: 1rem;
+        padding: 0 15px;
+      }
+      
+      .hero-models .hero-content {
+        transform: translateY(0);
+      }
+      
+      .talent-header h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        padding: 0 15px;
+      }
+      
+      .cta-box {
+        padding: 40px 25px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .carousel-card {
+        width: 200px;
+        height: 300px;
+      }
+      
+      .hero-models h1 {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        padding: 0 5px;
+      }
+      
+      .hero-models .subtitle {
+        font-size: 0.8rem;
+      }
+      
+      .hero-models .description {
+        font-size: 0.95rem;
+        padding: 0 10px;
+      }
+      
+      .cta-box {
+        padding: 30px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header corregido - clase "active" ahora en modelos.html -->
   <header class="header">
     <nav class="navbar">
-       <div class="logo">
+      <div class="logo">
         <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
       </div>
       <ul class="nav-links">
@@ -31,6 +486,7 @@
         <span class="hamburger-line"></span>
       </button>
     </nav>
+    <!-- Menú móvil corregido -->
     <div class="mobile-menu" id="mobile-menu">
       <ul class="mobile-nav-links">
         <li><a href="index.html">Inicio</a></li>
@@ -43,123 +499,115 @@
     </div>
   </header>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="page-header-overlay"></div>
-    <div class="container">
-      <span class="section-tag">Nuestro Talento</span>
-      <h1 class="page-title">Nuestros <span class="gold">Modelos</span></h1>
-      <p class="page-subtitle">Conoce a los rostros que están redefiniendo la moda</p>
+  <!-- Hero Section con efectos en el fondo -->
+  <section class="hero-models">
+    <div class="studio-light-effect"></div>
+    <div class="diamond-pattern"></div>
+    <div class="light-border"></div>
+    <div class="particles-container" id="particles-container"></div>
+    
+    <div class="hero-content">
+      <span class="subtitle">AGENCIA DE MODELOS PREMIUM</span>
+      <h1>Donde la <span class="gold">Elegancia</span><br>Cobra Vida</h1>
+      <p class="description">Representamos a los rostros más icónicos de la industria. Descubre el talento que está redefiniendo los estándares de la moda contemporánea.</p>
+    </div>
+    
+    <div class="scroll-indicator">
+      <span>DESCUBRE</span>
+      <div class="line"></div>
     </div>
   </section>
 
-  <!-- Models Content -->
-  <section class="content-section">
-    <div class="container">
-      <div class="models-grid">
-        <div class="model-card">
-          <div class="model-image">
-            <div class="image-placeholder">
-              <span class="placeholder-icon">✦</span>
-            </div>
-          </div>
-          <div class="model-info">
-            <h3>Valentina López</h3>
-            <p class="model-category">Alta Costura</p>
-            <div class="model-stats">
-              <span>1.78m</span>
-              <span>•</span>
-              <span>Ojos Verdes</span>
-            </div>
-          </div>
-        </div>
+  <!-- Talent Header -->
+  <section class="talent-header">
+    <span class="tag">NUESTRO TALENTO</span>
+    <h2>Conoce a Nuestras <span class="gold">Modelos</span></h2>
+  </section>
 
-        <div class="model-card">
-          <div class="model-image">
-            <div class="image-placeholder">
-              <span class="placeholder-icon">✦</span>
-            </div>
-          </div>
-          <div class="model-info">
-            <h3>Camila Rodríguez</h3>
-            <p class="model-category">Editorial</p>
-            <div class="model-stats">
-              <span>1.75m</span>
-              <span>•</span>
-              <span>Ojos Marrones</span>
-            </div>
-          </div>
+  <!-- Carousel section - Corregido HTML roto -->
+  <section class="carousel-section">
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <div class="carousel-card">
+          <img src="img/t1.jpg" alt="Modelo 1">
         </div>
-
-        <div class="model-card">
-          <div class="model-image">
-            <div class="image-placeholder">
-              <span class="placeholder-icon">✦</span>
-            </div>
-          </div>
-          <div class="model-info">
-            <h3>Sofía Martínez</h3>
-            <p class="model-category">Comercial</p>
-            <div class="model-stats">
-              <span>1.72m</span>
-              <span>•</span>
-              <span>Ojos Azules</span>
-            </div>
-          </div>
+        <div class="carousel-card">
+          <img src="img/t2.jpg" alt="Modelo 2">
         </div>
-
-        <div class="model-card">
-          <div class="model-image">
-            <div class="image-placeholder">
-              <span class="placeholder-icon">✦</span>
-            </div>
-          </div>
-          <div class="model-info">
-            <h3>Isabella Torres</h3>
-            <p class="model-category">Pasarela</p>
-            <div class="model-stats">
-              <span>1.80m</span>
-              <span>•</span>
-              <span>Ojos Negros</span>
-            </div>
-          </div>
+        <div class="carousel-card">
+          <img src="img/t3.jpg" alt="Modelo 3">
         </div>
-
-        <div class="model-card">
-          <div class="model-image">
-            <div class="image-placeholder">
-              <span class="placeholder-icon">✦</span>
-            </div>
-          </div>
-          <div class="model-info">
-            <h3>Luciana Gómez</h3>
-            <p class="model-category">Alta Costura</p>
-            <div class="model-stats">
-              <span>1.77m</span>
-              <span>•</span>
-              <span>Ojos Miel</span>
-            </div>
-          </div>
+        <div class="carousel-card">
+          <img src="img/t4.jpg" alt="Modelo 4">
         </div>
-
-        <div class="model-card">
-          <div class="model-image">
-            <div class="image-placeholder">
-              <span class="placeholder-icon">✦</span>
-            </div>
-          </div>
-          <div class="model-info">
-            <h3>Mariana Silva</h3>
-            <p class="model-category">Editorial</p>
-            <div class="model-stats">
-              <span>1.74m</span>
-              <span>•</span>
-              <span>Ojos Verdes</span>
-            </div>
-          </div>
+        <div class="carousel-card">
+          <img src="img/t5.jpg" alt="Modelo 5">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t6.jpg" alt="Modelo 6">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t7.jpg" alt="Modelo 7">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t8.jpg" alt="Modelo 8">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t9.jpg" alt="Modelo 9">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t10.jpg" alt="Modelo 10">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t11.jpg" alt="Modelo 11">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t12.jpg" alt="Modelo 12">
+        </div>
+        <!-- Duplicado para loop infinito -->
+        <div class="carousel-card">
+          <img src="img/t1.jpg" alt="Modelo 1">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t2.jpg" alt="Modelo 2">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t3.jpg" alt="Modelo 3">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t4.jpg" alt="Modelo 4">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t5.jpg" alt="Modelo 5">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t6.jpg" alt="Modelo 6">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t7.jpg" alt="Modelo 7">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t8.jpg" alt="Modelo 8">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t9.jpg" alt="Modelo 9">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t10.jpg" alt="Modelo 10">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t11.jpg" alt="Modelo 11">
+        </div>
+        <div class="carousel-card">
+          <img src="img/t12.jpg" alt="Modelo 12">
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- CTA Box -->
+  <section class="content-section">
+    <div class="models-container">
       <div class="cta-box">
         <h2>¿Quieres ser parte de nuestro <span class="gold">roster</span>?</h2>
         <p>Envía tu aplicación y únete a la familia Glow Fashion Models.</p>
@@ -174,9 +622,9 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-           <div class="logo logo-footer">
-  <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models" >
-</div>
+          <div class="logo logo-footer">
+            <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
+          </div>
           <p>Transformando el potencial en presencia desde 2009.</p>
         </div>
         <div class="footer-links">
@@ -185,7 +633,13 @@
           <a href="nosotros.html">Nosotros</a>
           <a href="servicios.html">Servicios</a>
           <a href="modelos.html">Modelos</a>
-          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-links">
+          <h4>Servicios</h4>
+          <a href="#">Casting</a>
+          <a href="#">Formación</a>
+          <a href="#">Book Profesional</a>
+          <a href="#">Eventos</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -194,6 +648,49 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Menú hamburguesa funcional
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-cta');
+
+    hamburgerBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        hamburgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    window.addEventListener('scroll', function() {
+      if (mobileMenu.classList.contains('active')) {
+        hamburgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // Generar partículas doradas
+    function createParticles() {
+      const container = document.getElementById('particles-container');
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('gold-particle');
+        particle.style.width = Math.random() * 100 + 50 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(particle);
+      }
+    }
+    createParticles();
+  </script>
 </body>
 </html>
