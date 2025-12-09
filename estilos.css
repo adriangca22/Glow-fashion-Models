@@ -78,7 +78,7 @@ img {
 
 /* PASO 1: Ajustar el Logo */
 .logo img {
-  width: 80px; /* Logo más grande */
+  width: 100px; /* Logo más grande */
   height: auto;
   object-fit: contain;
   /* ... (deja el resto de tus propiedades) ... */

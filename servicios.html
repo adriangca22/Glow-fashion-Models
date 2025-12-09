@@ -6,8 +6,208 @@
   <title>Glow Fashion Models - Servicios</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="estilos.css">
   <style>
+    /* ========== RESET Y BASE ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    
+    /* ========== HEADER Y NAVEGACIÓN ========== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(13, 13, 13, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+    }
+    
+    .navbar {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    .nav-links li a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #c9a227;
+    }
+    
+    .nav-cta .btn-primary {
+      display: inline-block;
+      background: #c9a227;
+      color: #0d0d0d;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 25px;
+      border: 1px solid #c9a227;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-cta .btn-primary:hover {
+      background: transparent;
+      color: #c9a227;
+    }
+    
+    /* ========== MENÚ HAMBURGUESA CON CSS PURO ========== */
+    /* Nuevo sistema de menú hamburguesa usando checkbox CSS */
+    .hamburger-checkbox {
+      display: none;
+    }
+    
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    .hamburger-line {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #c9a227;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    
+    /* Animación del botón hamburguesa cuando está activo */
+    .hamburger-checkbox:checked ~ .navbar .hamburger .hamburger-line:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger-checkbox:checked ~ .navbar .hamburger .hamburger-line:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    
+    .hamburger-checkbox:checked ~ .navbar .hamburger .hamburger-line:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    /* Menú móvil */
+    .mobile-menu {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
+      z-index: 999;
+      padding: 30px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+      transform: translateY(-20px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Mostrar menú móvil cuando el checkbox está marcado */
+    .hamburger-checkbox:checked ~ .mobile-menu {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    
+    .mobile-nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .mobile-nav-links li a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 12px 0;
+      display: block;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-links li a:hover,
+    .mobile-nav-links li a.active {
+      color: #c9a227;
+      padding-left: 10px;
+      border-bottom-color: rgba(201, 162, 39, 0.3);
+    }
+    
+    .mobile-cta {
+      display: block;
+      margin-top: 30px;
+      text-align: center;
+      padding: 15px 30px;
+      background: #c9a227;
+      color: #0d0d0d;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid #c9a227;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-cta:hover {
+      background: transparent;
+      color: #c9a227;
+    }
+    
     /* ========== SERVICIOS PAGE STYLES ========== */
     
     /* Hero Section con imagen de fondo - estilo similar al index */
@@ -602,23 +802,6 @@
       display: inline-block;
     }
     
-    .cta-servicios h2 .gold::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, #c9a227, transparent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.6s ease;
-    }
-    
-    .cta-servicios h2:hover .gold::after {
-      transform: scaleX(1);
-    }
-    
     .cta-servicios p {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.1rem;
@@ -626,7 +809,6 @@
       max-width: 600px;
       margin: 0 auto 30px;
       line-height: 1.7;
-      animation: fadeInUp 1s ease 0.2s both;
     }
     
     .cta-servicios .btn-primary {
@@ -642,156 +824,88 @@
       border: 1px solid #c9a227;
       text-decoration: none;
       transition: all 0.3s ease;
-      animation: fadeInUp 1s ease 0.4s both;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .cta-servicios .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
     }
     
     .cta-servicios .btn-primary:hover {
       background: transparent;
       color: #c9a227;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(201, 162, 39, 0.3);
     }
     
-    .cta-servicios .btn-primary:hover::before {
-      width: 300px;
-      height: 300px;
+    /* Footer */
+    .footer {
+      background: #0a0a0a;
+      padding: 60px 20px 30px;
+      position: relative;
     }
-
-    /* ========== ESTILOS PARA MENÚ MÓVIL ========== */
     
-    /* Corregido: el menú móvil ahora usa visibility y pointer-events en lugar de display:none para permitir transiciones */
-    .mobile-menu {
-      position: fixed;
-      top: 80px;
+    .footer-glow-line {
+      position: absolute;
+      top: 0;
       left: 0;
-      width: 100%;
-      background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
-      z-index: 9999;
-      padding: 30px 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      border-top: 1px solid rgba(201, 162, 39, 0.2);
-      transform: translateY(-20px);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a227, transparent);
     }
     
-    /* Corregido: el estado activo ahora muestra el menú correctamente */
-    .mobile-menu.active {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
     
-    .mobile-nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .footer-content {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
     }
     
-    .mobile-nav-links li a {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.85);
-      text-decoration: none;
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+    
+    .logo-footer img {
+      height: 40px;
+    }
+    
+    .footer-links h4 {
+      color: #c9a227;
+      font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      padding: 12px 0;
-      display: block;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
+      margin-bottom: 20px;
     }
     
-    .mobile-nav-links li a:hover,
-    .mobile-nav-links li a.active {
-      color: #c9a227;
-      padding-left: 10px;
-      border-bottom-color: rgba(201, 162, 39, 0.3);
-    }
-    
-    .mobile-cta {
+    .footer-links a {
       display: block;
-      margin-top: 30px;
-      text-align: center;
-      padding: 15px 30px;
-      background: #c9a227;
-      color: #0d0d0d;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
       text-decoration: none;
-      border: 1px solid #c9a227;
-      transition: all 0.3s ease;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
     }
     
-    .mobile-cta:hover {
-      background: transparent;
+    .footer-links a:hover {
       color: #c9a227;
     }
     
-    /* Botón hamburguesa animado */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 30px;
-      height: 20px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 10000;
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    .hamburger-line {
-      width: 100%;
-      height: 2px;
-      background-color: #c9a227;
-      transition: all 0.3s ease;
-      transform-origin: center;
+    .footer-bottom p {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.8rem;
     }
-    
-    /* Animación del botón hamburguesa cuando está activo */
-    .hamburger.active .hamburger-line:nth-child(1) {
-      transform: translateY(9px) rotate(45deg);
-    }
-    
-    .hamburger.active .hamburger-line:nth-child(2) {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    
-    .hamburger.active .hamburger-line:nth-child(3) {
-      transform: translateY(-9px) rotate(-45deg);
-    }
-    
+
     /* ========== MEDIA QUERIES PARA RESPONSIVE ========== */
     
     /* Tablet (768px y menos) */
     @media (max-width: 768px) {
-      /* Agregando reglas para mostrar hamburger y ocultar menú desktop */
       .hamburger {
         display: flex;
       }
@@ -807,7 +921,6 @@
       .mobile-menu {
         top: 60px;
       }
-      /* Fin del cambio */
       
       /* Hero Section Responsive */
       .servicios-hero {
@@ -947,11 +1060,15 @@
         width: 100%;
         max-width: 300px;
       }
+      
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
     }
     
     /* Móvil (480px y menos) */
     @media (max-width: 480px) {
-      /* Hero Section Móvil */
       .servicios-hero-container {
         padding: 80px 20px 40px;
       }
@@ -971,7 +1088,6 @@
         max-width: 250px;
       }
       
-      /* Header de Marcas Móvil */
       .seccion-marcas-header {
         padding: 25px 15px;
       }
@@ -984,7 +1100,6 @@
         font-size: 0.8rem;
       }
       
-      /* Servicios Alternados Móvil */
       .servicio-content {
         padding: 40px 20px;
       }
@@ -1013,7 +1128,6 @@
         height: 220px;
       }
       
-      /* Sección Modelos Móvil */
       .seccion-modelos {
         padding: 40px 15px;
       }
@@ -1059,7 +1173,6 @@
         font-size: 0.8rem;
       }
       
-      /* CTA Móvil */
       .cta-servicios {
         padding: 60px 15px;
       }
@@ -1075,25 +1188,6 @@
       .cta-servicios .btn-primary {
         padding: 15px 30px;
         font-size: 0.85rem;
-      }
-    }
-    
-    /* Móvil Pequeño (360px y menos) */
-    @media (max-width: 360px) {
-      .servicio-img-wrapper.large,
-      .servicio-img-wrapper.small {
-        width: 100%;
-        max-width: 250px;
-        height: 200px;
-        margin-bottom: 10px;
-      }
-      
-      .servicio-images {
-        flex-direction: column;
-      }
-      
-      .modelo-servicio-img {
-        height: 160px;
       }
     }
 
@@ -1130,71 +1224,56 @@
         transform: translateX(0);
       }
     }
-    
-    @keyframes shimmer {
-      0% {
-        background-position: -200% center;
-      }
-      100% {
-        background-position: 200% center;
-      }
-    }
-    
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    
-    @keyframes borderGlow {
-      0%, 100% {
-        box-shadow: 0 0 5px rgba(201, 162, 39, 0.3);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(201, 162, 39, 0.6);
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header con menú hamburguesa CSS puro -->
   <header class="header">
+    <!-- Checkbox oculto para controlar el menú -->
+    <input type="checkbox" id="hamburger-checkbox" class="hamburger-checkbox">
+    
     <nav class="navbar">
-       <div class="logo">
-        <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
+      <div class="logo">
+        <!-- Añadido enlace al logo como en el index -->
+        <a href="index.html">
+          <img src="img/LOGO.png" alt="Glow Fashion Models Logo">
+        </a>
       </div>
+      <!-- Cambiado texto a mayúsculas para coincidir con el index -->
       <ul class="nav-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="servicios.html" class="active">Servicios</a></li>
-        <li><a href="modelos.html">Modelos</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="nosotros.html">NOSOTROS</a></li>
+        <li><a href="servicios.html" class="active">SERVICIOS</a></li>
+        <li><a href="modelos.html">MODELOS</a></li>
+        <li><a href="contacto.html">CONTACTO</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="contacto.html" class="btn-primary">Únete Ahora</a>
+        <!-- Cambiado texto a mayúsculas -->
+        <a href="contacto.html" class="btn-primary">ÚNETE AHORA</a>
       </div>
-      <button class="hamburger" id="hamburger-btn" aria-label="Menú de navegación">
+      <!-- Label actúa como botón para el checkbox -->
+      <label for="hamburger-checkbox" class="hamburger" aria-label="Menú de navegación">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
-      </button>
+      </label>
     </nav>
-    <div class="mobile-menu" id="mobile-menu">
+    
+    <!-- Menú móvil controlado por el checkbox -->
+    <div class="mobile-menu">
+      <!-- Cambiado texto a mayúsculas en menú móvil -->
       <ul class="mobile-nav-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="servicios.html" class="active">Servicios</a></li>
-        <li><a href="modelos.html">Modelos</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="nosotros.html">NOSOTROS</a></li>
+        <li><a href="servicios.html" class="active">SERVICIOS</a></li>
+        <li><a href="modelos.html">MODELOS</a></li>
+        <li><a href="contacto.html">CONTACTO</a></li>
       </ul>
-      <a href="contacto.html" class="btn-primary mobile-cta">Únete Ahora</a>
+      <a href="contacto.html" class="btn-primary mobile-cta">ÚNETE AHORA</a>
     </div>
   </header>
 
-  <!-- Hero Section estilo similar al index con espacio para imagen de fondo -->
+  <!-- Hero Section -->
   <section class="servicios-hero">
     <div class="servicios-hero-container">
       <div class="servicios-hero-content">
@@ -1204,7 +1283,6 @@
         <a href="#servicios-marcas" class="btn-servicios">Explorar Servicios</a>
       </div>
       <div class="servicios-hero-image">
-        <!-- Coloca aquí tu imagen de hero -->
         <img src="img/cap5.png" alt="Modelo profesional">
       </div>
     </div>
@@ -1381,87 +1459,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const hamburgerBtn = document.getElementById('hamburger-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      
-      if (hamburgerBtn && mobileMenu) {
-        // Toggle del menú al hacer clic en hamburguesa
-        hamburgerBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Alternar clases activas
-          const isActive = mobileMenu.classList.contains('active');
-          
-          if (isActive) {
-            mobileMenu.classList.remove('active');
-            hamburgerBtn.classList.remove('active');
-            document.body.style.overflow = '';
-          } else {
-            mobileMenu.classList.add('active');
-            hamburgerBtn.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-        
-        // Cerrar menú al hacer clic en un enlace
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(function(link) {
-          link.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            hamburgerBtn.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-        });
-        
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', function(event) {
-          if (mobileMenu.classList.contains('active') && 
-              !mobileMenu.contains(event.target) && 
-              !hamburgerBtn.contains(event.target)) {
-            mobileMenu.classList.remove('active');
-            hamburgerBtn.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        });
-        
-        // Cerrar menú con tecla ESC
-        document.addEventListener('keydown', function(event) {
-          if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
-            mobileMenu.classList.remove('active');
-            hamburgerBtn.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        });
-      }
-      
-      // Animación para imágenes al hacer scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-      
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-      
-      // Observar imágenes de servicios
-      document.querySelectorAll('.servicio-img-wrapper').forEach(function(wrapper) {
-        wrapper.style.opacity = '0';
-        wrapper.style.transform = 'translateY(20px)';
-        wrapper.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(wrapper);
-      });
-    });
-  </script>
 </body>
 </html>

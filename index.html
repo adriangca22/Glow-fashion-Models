@@ -13,6 +13,365 @@
   
   <!-- Tu archivo CSS externo -->
   <link rel="stylesheet" href="estilos.css">
+
+  <!-- Estilos para la animación de brillo en la imagen -->
+  <style>
+    /* Wrapper para la imagen con efecto shine */
+    .about-img.main-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-img.main-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(20%);
+      transition: all 0.5s ease;
+    }
+
+    .about-img.main-img:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    /* Efecto de brillo animado */
+    .about-img.main-img::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.2), transparent);
+      animation: imageShine 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes imageShine {
+      0% {
+        left: -100%;
+      }
+      50% {
+        left: 100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    /* =============================================
+       RESPONSIVE - MOSTRAR IMAGEN EN MÓVIL
+       ============================================= */
+    
+    /* Tablet y móvil: mostrar imagen principal */
+    @media (max-width: 1024px) {
+      .about-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 40px !important;
+        align-items: center !important;
+      }
+
+      /* Mostrar imagen principal en móvil */
+      .about-images {
+        display: flex !important;
+        justify-content: center !important;
+        order: -1 !important;
+        height: auto !important;
+        width: 100% !important;
+        max-width: 320px !important;
+      }
+
+      .about-img.main-img {
+        position: relative !important;
+        width: 280px !important;
+        height: 380px !important;
+        border: 3px solid #c9a962 !important;
+      }
+
+      /* Ocultar imágenes secundarias de la derecha */
+      .about-images-right {
+        display: none !important;
+      }
+
+      .about-content {
+        padding: 0 20px !important;
+        text-align: center !important;
+        order: 1 !important;
+      }
+
+      .about-features {
+        align-items: center !important;
+      }
+    }
+
+    /* Móvil pequeño */
+    @media (max-width: 768px) {
+      .about-images {
+        max-width: 280px !important;
+      }
+
+      .about-img.main-img {
+        width: 250px !important;
+        height: 340px !important;
+      }
+    }
+
+    /* Móvil muy pequeño */
+    @media (max-width: 480px) {
+      .about-images {
+        max-width: 250px !important;
+      }
+
+      .about-img.main-img {
+        width: 220px !important;
+        height: 300px !important;
+        border-width: 2px !important;
+      }
+    }
+
+    /* =============================================
+       EFECTOS DE PARTÍCULAS Y BRILLOS PARA CLASSES-SHOWCASE
+       ============================================= */
+    
+    .classes-showcase {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Contenedor de partículas doradas */
+    .particles-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .gold-particle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+    }
+    
+    .gold-particle:nth-child(1) { width: 8px; height: 8px; top: 10%; left: 15%; animation-delay: 0s; }
+    .gold-particle:nth-child(2) { width: 6px; height: 6px; top: 25%; left: 5%; animation-delay: 1s; }
+    .gold-particle:nth-child(3) { width: 10px; height: 10px; top: 40%; left: 25%; animation-delay: 2s; }
+    .gold-particle:nth-child(4) { width: 5px; height: 5px; top: 60%; left: 10%; animation-delay: 3s; }
+    .gold-particle:nth-child(5) { width: 7px; height: 7px; top: 75%; left: 20%; animation-delay: 4s; }
+    .gold-particle:nth-child(6) { width: 9px; height: 9px; top: 85%; left: 8%; animation-delay: 5s; }
+    .gold-particle:nth-child(7) { width: 6px; height: 6px; top: 15%; left: 40%; animation-delay: 1.5s; }
+    .gold-particle:nth-child(8) { width: 8px; height: 8px; top: 50%; left: 35%; animation-delay: 2.5s; }
+    
+    @keyframes float {
+      0%, 100% { 
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+      }
+      50% { 
+        transform: translateY(-25px) scale(1.2);
+        opacity: 0.8;
+      }
+    }
+    
+    /* Efecto de luz de estudio - más claro */
+    .studio-light-effect {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 70% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, transparent 30%, rgba(0, 0, 0, 0.4) 80%);
+      z-index: 1;
+      pointer-events: none;
+      animation: lightShift 15s infinite alternate ease-in-out;
+    }
+    
+    @keyframes lightShift {
+      0% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    /* Patrón de diamantes sutiles - más visible */
+    .diamond-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(212, 175, 55, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(212, 175, 55, 0.05) 75%);
+      background-size: 40px 40px;
+      background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+      z-index: 1;
+      opacity: 0.5;
+      pointer-events: none;
+      animation: patternMove 40s linear infinite;
+    }
+    
+    @keyframes patternMove {
+      0% { background-position: 0 0, 0 20px, 20px -20px, -20px 0px; }
+      100% { background-position: 40px 0, 40px 20px, 60px -20px, 20px 0px; }
+    }
+    
+    /* Efecto de borde luminoso rotatorio */
+    .light-border {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .light-border::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(212, 175, 55, 0.15),
+        rgba(212, 175, 55, 0.08),
+        transparent
+      );
+      animation: rotateBorder 20s linear infinite;
+    }
+    
+    @keyframes rotateBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Asegurar que el contenido esté sobre los efectos */
+    .classes-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .classes-text {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .classes-image {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =============================================
+       EFECTO MINIMALISTA PARA CTA SECTION
+       ============================================= */
+    
+    /* Añadir efecto simple de partículas sutiles para CTA */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-subtle-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    .cta-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(212, 175, 55, 0.4);
+      border-radius: 50%;
+      animation: ctaFloat 12s infinite ease-in-out;
+    }
+    
+    .cta-particle:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+    .cta-particle:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
+    .cta-particle:nth-child(3) { top: 70%; left: 8%; animation-delay: 4s; }
+    .cta-particle:nth-child(4) { top: 80%; right: 5%; animation-delay: 6s; }
+    
+    @keyframes ctaFloat {
+      0%, 100% { 
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+      }
+      50% { 
+        transform: translateY(-15px) scale(1.3);
+        opacity: 0.6;
+      }
+    }
+    
+    /* Línea brillante sutil horizontal */
+    .cta-glow-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+      animation: lineGlow 4s infinite ease-in-out;
+    }
+    
+    .cta-glow-line-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+      animation: lineGlow 4s infinite ease-in-out;
+      animation-delay: 2s;
+    }
+    
+    @keyframes lineGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+    
+    /* Gradiente sutil de fondo */
+    .cta-subtle-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -165,6 +524,21 @@
 
   <!-- Classes Showcase Section -->
   <section id="servicios" class="classes-showcase">
+    <!-- Efectos de fondo -->
+    <div class="studio-light-effect"></div>
+    <div class="diamond-pattern"></div>
+    <div class="light-border"></div>
+    <div class="particles-container">
+      <div class="gold-particle"></div>
+      <div class="gold-particle"></div>
+      <div class="gold-particle"></div>
+      <div class="gold-particle"></div>
+      <div class="gold-particle"></div>
+      <div class="gold-particle"></div>
+      <div class="gold-particle"></div>
+      <div class="gold-particle"></div>
+    </div>
+    
     <div class="stars-container classes-stars">
       <div class="star"></div>
       <div class="star"></div>
@@ -199,6 +573,16 @@
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="cta-overlay"></div>
+    <!-- Añadir efectos minimalistas de partículas y brillos -->
+    <div class="cta-subtle-gradient"></div>
+    <div class="cta-subtle-particles">
+      <div class="cta-particle"></div>
+      <div class="cta-particle"></div>
+      <div class="cta-particle"></div>
+      <div class="cta-particle"></div>
+    </div>
+    <div class="cta-glow-line-top"></div>
+    <div class="cta-glow-line"></div>
     <div class="shimmer-waves">
       <div class="shimmer-wave"></div>
       <div class="shimmer-wave"></div>
@@ -231,7 +615,7 @@
     </div>
   </section>
 
-  <!-- Contact Section - Iconos FA actualizados -->
+  <!-- Contact Section -->
   <section id="contacto" class="contact">
     <div class="contact-decorations">
       <div class="corner-sparkle top-left">✦</div>
@@ -246,28 +630,23 @@
           <h2 class="section-title">Comienza tu <span class="gold">transformación</span></h2>
           <p>Estamos listos para ayudarte a alcanzar tus sueños en el mundo de la moda.</p>
           <div class="contact-details">
-            <!-- Icono de ubicacion con FA -->
             <div class="contact-item">
               <span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span>
               <span>Houston Trade Center 100 Sharpstown Center, suite 3020 Houston, TX 77036 tercer piso</span>
             </div>
-            <!-- Icono de email con FA -->
             <div class="contact-item">
               <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
               <span>glowfashionmodels@gmail.com</span>
             </div>
-            <!-- Icono de telefono con FA -->
             <div class="contact-item">
               <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
               <span>+1 346-614-8437</span>
             </div>
-            <!-- Icono de WhatsApp con FA (verde) -->
             <div class="contact-item whatsapp-item">
               <span class="contact-icon whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></span>
               <a href="https://wa.me/18328013719" target="_blank" rel="noopener noreferrer">+1 832-801-3719</a>
             </div>
           </div>
-          <!-- Redes sociales con iconos FA -->
           <div class="social-links">
             <a href="#" class="social-link" aria-label="Instagram">
               <i class="fa-brands fa-instagram"></i>
@@ -311,9 +690,9 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-        <div class="logo logo-footer">
-  <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models" >
-</div>
+          <div class="logo logo-footer">
+            <img src="img/LOGO.png" alt="Logo de GLOW Fashion Models">
+          </div>
           <p>Transformando el potencial en presencia desde 2009.</p>
         </div>
         <div class="footer-links">
