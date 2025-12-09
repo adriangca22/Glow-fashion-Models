@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="estilos.css">
   <style>
-    /* Estilos adicionales para las mejoras */
+    /* ========== ESTILOS MEJORADOS PARA ICONOS RESPONSIVE ========== */
+    
+    /* Grid principal */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 0.8fr 1.5fr;
@@ -50,36 +52,129 @@
     }
     
     @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     @keyframes fadeInLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      to { opacity: 1; transform: translateX(0); }
     }
     
-    /* Iconos para redes sociales en la sección de contacto */
+    /* ========== MEJORAS PARA ICONOS DE CONTACTO ========== */
+    .contact-details {
+      margin: 2rem 0;
+    }
+    
+    /* Contenedor de items de contacto mejorado */
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      padding: 0.8rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(212, 175, 55, 0.2);
+      transform: translateX(5px);
+    }
+    
+    /* Iconos de contacto - TAMAÑO Y ESPACIADO MEJORADO */
+    .contact-icon {
+      width: 50px; /* Un poco más grande */
+      height: 50px;
+      background: rgba(212, 175, 55, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.2rem;
+      color: #d4af37;
+      flex-shrink: 0;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover .contact-icon {
+      background: rgba(212, 175, 55, 0.25);
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    }
+    
+    /* Texto al lado de los iconos */
+    .contact-item span:last-child,
+    .contact-item a {
+      flex: 1;
+      color: #e0e0e0;
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-item:hover span:last-child {
+      color: #ffffff;
+    }
+    
+    /* WhatsApp específico */
+    .whatsapp-item .contact-icon {
+      background: rgba(37, 211, 102, 0.15);
+      color: #25D366;
+    }
+    
+    .whatsapp-item a {
+      color: #25D366;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .whatsapp-item:hover a {
+      color: #128C7E;
+      text-decoration: underline;
+    }
+    
+    .whatsapp-item:hover .contact-icon {
+      background: rgba(37, 211, 102, 0.25);
+    }
+    
+    /* NUEVO ICONO DE HORARIO */
+    .hours-item .contact-icon {
+      background: rgba(255, 193, 7, 0.15);
+      color: #ffc107;
+    }
+    
+    .hours-item span:last-child {
+      color: #ffc107;
+      font-weight: 600;
+    }
+    
+    .hours-item:hover .contact-icon {
+      background: rgba(255, 193, 7, 0.25);
+    }
+    
+    /* ========== ICONOS DE REDES SOCIALES ========== */
     .social-links {
       display: flex;
       gap: 1rem;
       margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
     }
     
     .social-btn {
-      width: 40px;
-      height: 40px;
+      width: 50px; /* Un poco más grande */
+      height: 50px;
       border-radius: 50%;
       background: rgba(212, 175, 55, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #d4af37;
-      font-size: 1.2rem;
+      font-size: 1.4rem; /* Iconos más grandes */
       transition: all 0.3s ease;
       border: 1px solid rgba(212, 175, 55, 0.2);
     }
@@ -87,91 +182,11 @@
     .social-btn:hover {
       background: #d4af37;
       color: #000;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-    }
-    
-    /* Efecto para el botón de envío */
-    .btn-primary {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
+      transform: translateY(-5px) scale(1.1);
       box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
     }
     
-    .btn-primary::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 5px;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.5);
-      opacity: 0;
-      border-radius: 100%;
-      transform: scale(1, 1) translate(-50%);
-      transform-origin: 50% 50%;
-    }
-    
-    .btn-primary:focus:not(:active)::after {
-      animation: ripple 1s ease-out;
-    }
-    
-    @keyframes ripple {
-      0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-      }
-      100% {
-        transform: scale(50, 50);
-        opacity: 0;
-      }
-    }
-    
-    /* Mejorando los ítems de contacto */
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-    }
-    
-    .contact-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(212, 175, 55, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 1rem;
-      color: #d4af37;
-      flex-shrink: 0;
-    }
-    
-    /* Animación para los ítems de contacto */
-    .contact-item {
-      opacity: 0;
-      transform: translateX(-10px);
-      animation: slideInRight 0.6s ease-out forwards;
-    }
-    
-    .contact-item:nth-child(1) { animation-delay: 0.1s; }
-    .contact-item:nth-child(2) { animation-delay: 0.2s; }
-    .contact-item:nth-child(3) { animation-delay: 0.3s; }
-    .contact-item:nth-child(4) { animation-delay: 0.4s; }
-    
-    @keyframes slideInRight {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    
-    /* Estilos para el formulario (más grande) */
+    /* ========== FORMULARIO ========== */
     .contact-form {
       background: rgba(255, 255, 255, 0.05);
       padding: 2.5rem;
@@ -214,28 +229,305 @@
       background: rgba(255, 255, 255, 0.1);
     }
     
-    /* Responsive */
+    /* ========== MEDIA QUERIES MEJORADAS PARA RESPONSIVE ========== */
+    
+    /* Laptops y tablets grandes (992px - 1200px) */
     @media (max-width: 1200px) {
       .contact-grid {
         grid-template-columns: 1fr 0.9fr 1.6fr;
+        gap: 1.5rem;
+      }
+      
+      .contact-form {
+        padding: 2rem;
       }
     }
     
+    /* Tablets (768px - 992px) */
     @media (max-width: 992px) {
       .contact-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+          "info info"
+          "image form";
         gap: 2rem;
       }
       
+      .contact-info {
+        grid-area: info;
+      }
+      
       .contact-image {
+        grid-area: image;
         min-height: 350px;
-        order: -1;
+        height: 350px;
+      }
+      
+      .contact-form {
+        grid-area: form;
+      }
+      
+      /* Ajuste de iconos para tablet */
+      .contact-item {
+        padding: 0.7rem;
+      }
+      
+      .contact-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        margin-right: 1rem;
+      }
+      
+      .social-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
       }
     }
     
+    /* Tabletas pequeñas y móviles grandes (576px - 768px) */
     @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+          "info"
+          "image"
+          "form";
+        gap: 2rem;
+      }
+      
       .contact-form {
-        padding: 2rem;
+        padding: 1.5rem;
+      }
+      
+      .contact-image {
+        min-height: 300px;
+        height: 300px;
+      }
+      
+      /* ICONOS EN MÓVIL - MEJOR DISPOSICIÓN */
+      .contact-item {
+        flex-direction: row; /* Mantener horizontal en móvil grande */
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
+        padding: 0.8rem;
+      }
+      
+      .contact-icon {
+        margin-right: 0;
+        margin-bottom: 0;
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+      }
+      
+      .contact-item span:last-child,
+      .contact-item a {
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+      
+      .social-links {
+        justify-content: center;
+        margin-top: 1.8rem;
+      }
+      
+      .social-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Móviles medianos (480px - 576px) */
+    @media (max-width: 576px) {
+      .contact-grid {
+        gap: 1.8rem;
+      }
+      
+      .contact-form {
+        padding: 1.4rem;
+      }
+      
+      .contact-image {
+        min-height: 280px;
+        height: 280px;
+      }
+      
+      .contact-item {
+        margin-bottom: 1rem;
+        padding: 0.7rem;
+        flex-direction: row; /* Mantener horizontal */
+      }
+      
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+      
+      .contact-item span:last-child,
+      .contact-item a {
+        font-size: 0.92rem;
+      }
+      
+      /* Ajuste para dirección larga */
+      .contact-details .contact-item:first-child span:last-child {
+        font-size: 0.88rem;
+        line-height: 1.4;
+      }
+      
+      .social-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+      }
+    }
+    
+    /* Móviles pequeños (hasta 480px) */
+    @media (max-width: 480px) {
+      .contact-grid {
+        gap: 1.5rem;
+      }
+      
+      .contact-form {
+        padding: 1.2rem;
+      }
+      
+      .contact-image {
+        min-height: 250px;
+        height: 250px;
+      }
+      
+      /* ICONOS EN MÓVIL PEQUEÑO - DISPOSICIÓN VERTICAL MEJORADA */
+      .contact-item {
+        flex-direction: column; /* Cambiar a vertical en móvil pequeño */
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding: 0.8rem;
+        text-align: center;
+        align-items: center; /* Centrar contenido */
+      }
+      
+      .contact-icon {
+        width: 44px; /* Un poco más grande para mejor visibilidad */
+        height: 44px;
+        font-size: 1.2rem;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+      }
+      
+      .contact-item span:last-child,
+      .contact-item a {
+        font-size: 0.9rem;
+        text-align: center;
+        width: 100%;
+      }
+      
+      /* Ajuste especial para dirección */
+      .contact-details .contact-item:first-child span:last-child {
+        font-size: 0.86rem;
+        line-height: 1.3;
+        word-break: break-word;
+        hyphens: auto;
+      }
+      
+      .social-links {
+        justify-content: center;
+        margin-top: 1.5rem;
+        gap: 0.8rem;
+      }
+      
+      .social-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Móviles muy pequeños (hasta 360px) */
+    @media (max-width: 360px) {
+      .contact-image {
+        min-height: 220px;
+        height: 220px;
+      }
+      
+      .contact-form {
+        padding: 1rem;
+      }
+      
+      .contact-item {
+        padding: 0.7rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+      
+      .contact-item span:last-child,
+      .contact-item a {
+        font-size: 0.88rem;
+      }
+      
+      .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+    }
+    
+    /* Orientación horizontal en móviles */
+    @media (max-height: 600px) and (orientation: landscape) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+          "info form"
+          "image image";
+      }
+      
+      .contact-image {
+        min-height: 200px;
+        height: 200px;
+      }
+      
+      /* En landscape, mantener disposición horizontal */
+      .contact-item {
+        flex-direction: row;
+        align-items: center;
+      }
+      
+      .contact-icon {
+        margin-bottom: 0;
+        margin-right: 0.8rem;
+      }
+      
+      .social-links {
+        justify-content: flex-start;
+      }
+    }
+    
+    /* Pantallas muy altas */
+    @media (min-height: 1000px) {
+      .contact-image {
+        min-height: 500px;
+      }
+      
+      .contact-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+      }
+      
+      .social-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -285,7 +577,7 @@
     </div>
   </section>
 
-    <!-- Contact Section - Iconos FA actualizados -->
+  <!-- Contact Section - Iconos FA actualizados -->
   <section id="contacto" class="contact">
     <div class="contact-decorations">
       <div class="corner-sparkle top-left">✦</div>
@@ -299,43 +591,62 @@
           <span class="section-tag">Contacto</span>
           <h2 class="section-title">Comienza tu <span class="gold">transformación</span></h2>
           <p>Estamos listos para ayudarte a alcanzar tus sueños en el mundo de la moda.</p>
+          
           <div class="contact-details">
-            <!-- Icono de ubicacion con FA -->
+            <!-- Icono de ubicación con FA -->
             <div class="contact-item">
               <span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span>
               <span>Houston Trade Center 100 Sharpstown Center, suite 3020 Houston, TX 77036 tercer piso</span>
             </div>
+            
+            <!-- NUEVO Icono de horario con FA -->
+            <div class="contact-item hours-item">
+              <span class="contact-icon"><i class="fa-solid fa-clock"></i></span>
+              <span>Lunes a Sábado: 11:00 AM - 7:00 PM</span>
+            </div>
+            
             <!-- Icono de email con FA -->
             <div class="contact-item">
               <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
               <span>glowfashionmodels@gmail.com</span>
             </div>
-            <!-- Icono de telefono con FA -->
+            
+            <!-- Icono de teléfono con FA -->
             <div class="contact-item">
               <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
               <span>+1 346-614-8437</span>
             </div>
+            
             <!-- Icono de WhatsApp con FA (verde) -->
             <div class="contact-item whatsapp-item">
               <span class="contact-icon whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></span>
               <a href="https://wa.me/18328013719" target="_blank" rel="noopener noreferrer">+1 832-801-3719</a>
             </div>
           </div>
+          
           <div class="social-links">
-            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
-            <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-btn" aria-label="TikTok">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="#" class="social-btn" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
           </div>
         </div>
         
-        <!-- Espacio para la imagen profesional (más pequeña) -->
+        <!-- Espacio para la imagen profesional -->
         <div class="contact-image">
-          <img src="img/foto12.jpg">
+          <img src="img/foti.jpg" alt="Modelo profesional de Glow Fashion Models">
           <div class="image-overlay"></div>
         </div>
 
-        <!-- Formulario (más grande) -->
+        <!-- Formulario -->
         <form class="contact-form">
           <h2>Envíanos un <span class="gold">Mensaje</span></h2>
           
@@ -488,6 +799,8 @@
                 z-index: 1000;
                 animation: slideInRight 0.5s ease-out;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                max-width: 90%;
+                word-wrap: break-word;
               `;
               
               document.body.appendChild(confirmation);
@@ -528,8 +841,40 @@
           background: #27ae60;
           border-color: #27ae60;
         }
+        
+        /* Ajustes para responsive en la confirmación */
+        @media (max-width: 480px) {
+          .confirmation-message {
+            top: 10px;
+            right: 10px;
+            left: 10px;
+            max-width: calc(100% - 20px);
+            padding: 0.8rem;
+            font-size: 0.9rem;
+          }
+        }
       `;
       document.head.appendChild(style);
+      
+      // Menú móvil
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (hamburgerBtn && mobileMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+          hamburgerBtn.classList.toggle('active');
+          mobileMenu.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer clic en enlace
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+          });
+        });
+      }
     });
   </script>
 </body>

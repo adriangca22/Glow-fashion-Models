@@ -45,11 +45,19 @@
     .filosofia-image-wrapper {
       position: relative;
       overflow: hidden;
+      width: 100%;
+      height: 0;
+      padding-bottom: 120%; /* Proporción ajustada */
     }
 
     .filosofia-image-wrapper img {
+      position: absolute;
+      top: 80px;
+      left: 0;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%; /* Enfoca la parte superior de la imagen */
       display: block;
       filter: grayscale(20%);
       transition: all 0.5s ease;
@@ -219,7 +227,7 @@
       gap: 80px;
     }
 
-    /* Nueva galería asimétrica minimalista */
+    /* Galería asimétrica minimalista - MÁS ALTA EN MÓVIL */
     .mision-gallery {
       flex: 0 0 500px;
       display: grid;
@@ -233,6 +241,7 @@
       position: relative;
       overflow: hidden;
       background: #1a1a1a;
+      border-radius: 8px;
     }
 
     /* Imagen principal ocupa 2 filas */
@@ -242,8 +251,9 @@
 
     .mision-image-card img {
       width: 100%;
-      height: 100%;
+      height: 200%;
       object-fit: cover;
+      object-position: center;
       display: block;
       filter: grayscale(100%);
       transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -400,6 +410,7 @@
       opacity: 0;
       animation: fadeInUp 0.8s ease forwards;
       overflow: hidden;
+      border-radius: 8px;
     }
 
     .team-card:nth-child(1) { animation-delay: 0.2s; }
@@ -439,6 +450,7 @@
       background: linear-gradient(135deg, rgba(201, 162, 39, 0.05), transparent);
       transition: all 0.4s ease;
       z-index: 1;
+      border-radius: 8px;
     }
 
     .golden-frame::before,
@@ -473,6 +485,7 @@
       left: -5px;
       border-right: none;
       border-bottom: none;
+      border-radius: 8px 0 0 0;
     }
 
     .frame-corner.top-right {
@@ -480,6 +493,7 @@
       right: -5px;
       border-left: none;
       border-bottom: none;
+      border-radius: 0 8px 0 0;
     }
 
     .frame-corner.bottom-left {
@@ -487,6 +501,7 @@
       left: -5px;
       border-right: none;
       border-top: none;
+      border-radius: 0 0 0 8px;
     }
 
     .frame-corner.bottom-right {
@@ -494,6 +509,7 @@
       right: -5px;
       border-left: none;
       border-top: none;
+      border-radius: 0 0 8px 0;
     }
 
     .team-card:hover .golden-frame {
@@ -501,7 +517,7 @@
       transform: scale(1.02);
     }
 
-    /* Contenedor de imagen del equipo */
+    /* Contenedor de imagen del equipo - MEJORADO PARA MÓVIL */
     .team-image-container {
       position: absolute;
       top: 15px;
@@ -511,16 +527,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start; /* Cambiado para mejor visualización */
       overflow: hidden;
       background: #1a1a1a;
+      border-radius: 4px;
     }
 
     .team-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top; /* Enfoca la parte superior */
       display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .team-card:hover .team-image {
+      transform: scale(1.05);
     }
 
     .team-info {
@@ -528,11 +551,12 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 15px;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 12px 15px;
       text-align: center;
       transform: translateY(100%);
       transition: transform 0.3s ease;
+      backdrop-filter: blur(5px);
     }
 
     .team-card:hover .team-info {
@@ -543,17 +567,18 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       color: #fff;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
       font-weight: 600;
     }
 
     .team-position {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #c9a227;
+      line-height: 1.3;
     }
 
-    /* ========== RESPONSIVE MEDIA QUERIES ========== */
+    /* ========== RESPONSIVE MEDIA QUERIES - IMÁGENES MÁS ALTAS ========== */
     
     /* Tablet grande (1024px y menos) */
     @media (max-width: 1024px) {
@@ -570,11 +595,19 @@
         max-width: 350px;
       }
       
+      .filosofia-image-wrapper {
+        padding-bottom: 140%; /* Más alto en tablet */
+      }
+      
+      .filosofia-image-wrapper img {
+        object-position: center 15%;
+      }
+      
       .mision-gallery {
         flex: none;
         width: 100%;
         max-width: 500px;
-        height: 450px;
+        height: 500px; /* Más alto */
       }
       
       .mision-title {
@@ -615,12 +648,118 @@
       
       .equipo-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 25px;
+      }
+      
+      .team-card {
+        aspect-ratio: 3/4.5; /* Más alto */
       }
     }
     
     /* Tablet (768px y menos) */
     @media (max-width: 768px) {
+      .filosofia-section,
+      .mision-section,
+      .equipo-section {
+        padding: 70px 0; /* Más padding */
+      }
+      
+      .filosofia-container,
+      .mision-container,
+      .equipo-container {
+        padding: 0 25px;
+      }
+      
+      .filosofia-image {
+        max-width: 320px; /* Más ancho */
+        margin: 0 auto;
+      }
+      
+      .filosofia-image-wrapper {
+        padding-bottom: 160%; /* Mucho más alto en móvil */
+      }
+      
+      .filosofia-image-wrapper img {
+        object-position: center 10%; /* Mejor enfoque */
+      }
+      
+      .filosofia-title {
+        font-size: 2.8rem; /* Ajustado */
+        letter-spacing: 4px;
+      }
+      
+      .filosofia-subtitle {
+        font-size: 3rem; /* Ajustado */
+      }
+      
+      .filosofia-tagline {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+      }
+      
+      .filosofia-description {
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+      
+      .glow-letter {
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+      }
+      
+      .glow-translation {
+        font-size: 0.8rem;
+      }
+      
+      .glow-description-box {
+        font-size: 0.9rem;
+        padding: 14px 16px;
+      }
+      
+      .mision-gallery {
+        height: 550px; /* Mucho más alto en tablet */
+        gap: 10px;
+      }
+      
+      .mision-title {
+        font-size: 3rem;
+        letter-spacing: 6px;
+      }
+      
+      .mision-text {
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+      
+      .mision-btn {
+        padding: 14px 40px;
+        font-size: 0.8rem;
+      }
+      
+      .equipo-title {
+        font-size: 2.8rem;
+        letter-spacing: 8px;
+      }
+      
+      .equipo-subtitle {
+        font-size: 1rem;
+        margin-bottom: 50px;
+      }
+      
+      .team-image-container {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+      
+      .team-card {
+        aspect-ratio: 3/5; /* Aún más alto en tablet */
+      }
+    }
+    
+    /* Móvil (480px y menos) */
+    @media (max-width: 480px) {
       .filosofia-section,
       .mision-section,
       .equipo-section {
@@ -634,162 +773,124 @@
       }
       
       .filosofia-title {
-        font-size: 2.5rem;
-        letter-spacing: 4px;
-      }
-      
-      .filosofia-subtitle {
-        font-size: 2.8rem;
-      }
-      
-      .filosofia-tagline {
-        font-size: 1.1rem;
-        letter-spacing: 2px;
-      }
-      
-      .filosofia-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-      
-      .glow-letter {
-        font-size: 1.8rem;
-        letter-spacing: 4px;
-      }
-      
-      .glow-translation {
-        font-size: 0.75rem;
-      }
-      
-      .glow-description-box {
-        font-size: 0.85rem;
-        padding: 12px 15px;
-      }
-      
-      .mision-gallery {
-        height: 350px;
-        gap: 8px;
-      }
-      
-      .mision-title {
-        font-size: 2.8rem;
-        letter-spacing: 6px;
-      }
-      
-      .mision-text {
-        font-size: 0.95rem;
-        line-height: 1.8;
-      }
-      
-      .mision-btn {
-        padding: 14px 35px;
-        font-size: 0.75rem;
-      }
-      
-      .equipo-title {
-        font-size: 2.5rem;
-        letter-spacing: 8px;
-      }
-      
-      .equipo-subtitle {
-        font-size: 0.9rem;
-        margin-bottom: 40px;
-      }
-    }
-    
-    /* Móvil (480px y menos) */
-    @media (max-width: 480px) {
-      .filosofia-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
         letter-spacing: 3px;
       }
       
       .filosofia-subtitle {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
       }
       
       .filosofia-tagline {
-        font-size: 1rem;
+        font-size: 1.1rem;
         letter-spacing: 1px;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
       }
       
       .filosofia-description {
-        font-size: 0.9rem;
-        margin-bottom: 30px;
+        font-size: 0.95rem;
+        margin-bottom: 35px;
+      }
+      
+      .filosofia-image {
+        max-width: 300px; /* Más ancho en móvil */
+      }
+      
+      .filosofia-image-wrapper {
+        padding-bottom: 180%; /* MUCHO más alto en móvil pequeño */
+      }
+      
+      .filosofia-image-wrapper img {
+        object-position: center 5%; /* Enfoca mejor */
       }
       
       .glow-acronym {
-        gap: 20px;
+        gap: 25px;
       }
       
       .glow-item {
-        gap: 10px;
+        gap: 12px;
+        flex-direction: column;
+        align-items: flex-start;
       }
       
       .glow-letter {
-        font-size: 1.5rem;
-        letter-spacing: 2px;
+        font-size: 1.6rem;
+        letter-spacing: 3px;
       }
       
       .glow-translation {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
       }
       
       .glow-description-box {
-        padding: 10px 12px;
-        font-size: 0.8rem;
+        padding: 12px 15px;
+        font-size: 0.85rem;
+        margin-left: 0;
+        max-width: 100%;
+      }
+      
+      .glow-description-box::before {
+        display: none;
       }
       
       .mision-gallery {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        height: 400px;
+        grid-template-rows: repeat(3, 1fr);
+        height: 650px; /* MUCHO más alto para móvil */
+        max-width: 100%;
       }
       
       .mision-image-card:first-child {
         grid-row: span 1;
       }
       
+      .mision-image-card img {
+        object-fit: cover;
+        object-position: center;
+      }
+      
       .mision-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
         letter-spacing: 4px;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
       }
       
       .mision-text {
-        font-size: 0.9rem;
-        line-height: 1.7;
-        margin-bottom: 30px;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 35px;
       }
       
       .mision-btn {
-        padding: 12px 30px;
-        font-size: 0.7rem;
+        padding: 14px 35px;
+        font-size: 0.75rem;
         letter-spacing: 2px;
+        width: 100%;
+        text-align: center;
       }
       
       .equipo-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
         letter-spacing: 6px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
       
       .equipo-subtitle {
-        font-size: 0.85rem;
-        line-height: 1.6;
-        margin-bottom: 30px;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 40px;
       }
       
       .equipo-grid {
         grid-template-columns: 1fr;
         max-width: 300px;
         margin: 0 auto;
-        gap: 25px;
+        gap: 30px;
       }
       
       .team-card {
-        aspect-ratio: 4/3;
+        aspect-ratio: 3/5.5; /* MÁS alto en móvil */
       }
       
       .golden-frame {
@@ -808,6 +909,22 @@
         right: 10px;
         bottom: 10px;
       }
+      
+      .team-image {
+        object-position: center top;
+      }
+      
+      .team-info {
+        padding: 10px 12px;
+      }
+      
+      .team-name {
+        font-size: 0.95rem;
+      }
+      
+      .team-position {
+        font-size: 0.7rem;
+      }
     }
     
     /* Móvil pequeño (360px y menos) */
@@ -819,28 +936,42 @@
       }
       
       .filosofia-title {
-        font-size: 1.8rem;
-      }
-      
-      .filosofia-subtitle {
         font-size: 2rem;
       }
       
+      .filosofia-subtitle {
+        font-size: 2.2rem;
+      }
+      
+      .filosofia-image {
+        max-width: 280px;
+      }
+      
+      .filosofia-image-wrapper {
+        padding-bottom: 190%; /* MÁXIMA altura para móvil muy pequeño */
+      }
+      
       .mision-gallery {
-        height: 350px;
+        height: 600px; /* Ajustado para pantallas pequeñas */
+        gap: 8px;
       }
       
       .mision-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       
       .equipo-title {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         letter-spacing: 4px;
       }
       
-      .glow-description-box::before {
-        display: none;
+      .equipo-grid {
+        max-width: 280px;
+        gap: 25px;
+      }
+      
+      .team-card {
+        aspect-ratio: 3/5.2; /* Ajuste fino */
       }
     }
     
@@ -859,7 +990,11 @@
       }
       
       .filosofia-image {
-        flex: 0 0 250px;
+        flex: 0 0 280px;
+      }
+      
+      .filosofia-image-wrapper {
+        padding-bottom: 150%;
       }
       
       .filosofia-title {
@@ -871,7 +1006,31 @@
       }
       
       .mision-gallery {
-        height: 300px;
+        height: 350px; /* Más compacto en landscape */
+      }
+      
+      .equipo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .team-card {
+        aspect-ratio: 3/4; /* Proporción normal en landscape */
+      }
+    }
+    
+    /* Pantallas muy grandes (más de 1400px) */
+    @media (min-width: 1400px) {
+      .filosofia-container {
+        max-width: 1400px;
+      }
+      
+      .mision-container {
+        max-width: 1300px;
+      }
+      
+      .equipo-container {
+        max-width: 1200px;
       }
     }
   </style>
@@ -992,7 +1151,7 @@
         </div>
         <div class="mision-image-card">
           <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
-          <img src="img/foto14.png" alt="Modelo 3">
+          <img src="img/foto14.jpg" alt="Modelo 3">
         </div>
       </div>
       
@@ -1026,10 +1185,10 @@
           </div>
           <div class="team-image-container">
             <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
-            <img class="team-image" src="img/picture (1).jpg" alt="Director Creativo">
+            <img class="team-image" src="img/lider (1).jpg" alt="Director Creativo">
             <div class="team-info">
-              <div class="team-name">Juan Pérez</div>
-              <div class="team-position">Director Creativo</div>
+              <div class="team-name">Nitzeira Correa</div>
+              <div class="team-position">Pasarela, pose, protocolo y etiqueta</div>
             </div>
           </div>
         </div>
@@ -1044,10 +1203,10 @@
           </div>
           <div class="team-image-container">
             <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
-            <img class="team-image" src="img/picture (2).jpg" alt="Manager de Talento">
+            <img class="team-image" src="img/lider (3).jpg" alt="Manager de Talento">
             <div class="team-info">
-              <div class="team-name">María García</div>
-              <div class="team-position">Manager de Talento</div>
+              <div class="team-name">Juan Diaz</div>
+              <div class="team-position">Asesoría de imagen</div>
             </div>
           </div>
         </div>
@@ -1062,10 +1221,10 @@
           </div>
           <div class="team-image-container">
             <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
-            <img class="team-image" src="img/picture (3).jpg" alt="Coordinador de Eventos">
+            <img class="team-image" src="img/lider (4).jpg" alt="Coordinador de Eventos">
             <div class="team-info">
-              <div class="team-name">Carlos Rodríguez</div>
-              <div class="team-position">Coordinador de Eventos</div>
+              <div class="team-name">Janine MacCollin</div>
+              <div class="team-position">Clase de dicción</div>
             </div>
           </div>
         </div>
@@ -1080,10 +1239,10 @@
           </div>
           <div class="team-image-container">
             <!-- REEMPLAZA ESTA RUTA CON TU IMAGEN -->
-            <img class="team-image" src="img/picture (4).jpg" alt="Estilista Principal">
+            <img class="team-image" src="img/lider (2).jpg" alt="Estilista Principal">
             <div class="team-info">
-              <div class="team-name">Ana Martínez</div>
-              <div class="team-position">Estilista Principal</div>
+              <div class="team-name">Sara Adames</div>
+              <div class="team-position">Clases de maquillaje</div>
             </div>
           </div>
         </div>
