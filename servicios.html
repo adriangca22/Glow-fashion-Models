@@ -235,11 +235,14 @@
       position: relative;
     }
     
+    /* Ajuste de imagen hero para que se muestre completa */
     .servicios-hero-image img {
       width: 100%;
       height: auto;
+      max-height: 600px;
       display: block;
       object-fit: cover;
+      object-position: center top;
       animation: floatImage 6s ease-in-out infinite;
     }
     
@@ -388,10 +391,12 @@
       animation: shimmerEffect 2s ease-in-out infinite;
     }
     
+    /* Ajuste de imágenes de servicios para que se muestren completas con cover */
     .servicio-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
       transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       filter: brightness(0.9);
@@ -419,14 +424,15 @@
       box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
     }
     
+    /* Tamaños ajustados para mostrar imágenes completas */
     .servicio-img-wrapper.large {
-      width: 280px;
-      height: 380px;
+      width: 300px;
+      height: 420px;
     }
     
     .servicio-img-wrapper.small {
-      width: 200px;
-      height: 280px;
+      width: 220px;
+      height: 320px;
     }
     
     @keyframes shimmerEffect {
@@ -614,10 +620,10 @@
       color: rgba(255, 255, 255, 0.75);
     }
     
-    /* Nuevo diseño de imagen - fondo negro transparente */
+    /* Ajuste de imágenes de modelos servicios para que se adapten con cover */
     .modelo-servicio-img {
-      width: 200px;
-      height: 160px;
+      width: 220px;
+      height: 180px;
       background: rgba(0, 0, 0, 0.8);
       flex-shrink: 0;
       overflow: hidden;
@@ -649,6 +655,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       transition: all 0.5s ease;
       filter: brightness(0.9);
     }
@@ -890,6 +897,13 @@
         max-width: 100%;
       }
       
+      /* Ajuste de imagen hero en tablet */
+      .servicios-hero-image img {
+        max-height: 500px;
+        object-fit: cover;
+        object-position: center top;
+      }
+      
       /* Header de Marcas */
       .seccion-marcas-header h2 {
         font-size: 1.1rem;
@@ -930,11 +944,18 @@
         justify-content: center;
       }
       
+      /* Tamaños de imágenes de servicios en tablet con cover */
       .servicio-img-wrapper.large,
       .servicio-img-wrapper.small {
         width: 45%;
-        min-width: 150px;
-        height: 250px;
+        min-width: 160px;
+        height: 280px;
+      }
+      
+      .servicio-img-wrapper.large img,
+      .servicio-img-wrapper.small img {
+        object-fit: cover;
+        object-position: center top;
       }
       
       /* Sección Modelos Responsive */
@@ -965,10 +986,16 @@
         flex-direction: column !important;
       }
       
+      /* Ajuste de imágenes de modelos servicios en tablet */
       .modelo-servicio-img {
         width: 100%;
-        height: 200px;
+        height: 220px;
         order: -1;
+      }
+      
+      .modelo-servicio-img img {
+        object-fit: cover;
+        object-position: center top;
       }
       
       .modelo-servicio-content {
@@ -1025,6 +1052,13 @@
         font-size: 0.95rem;
       }
       
+      /* Ajuste de imagen hero en móvil */
+      .servicios-hero-image img {
+        max-height: 400px;
+        object-fit: cover;
+        object-position: center top;
+      }
+      
       .servicios-hero-content .btn-servicios {
         padding: 12px 25px;
         font-size: 0.8rem;
@@ -1065,11 +1099,18 @@
         gap: 10px;
       }
       
+      /* Tamaños de imágenes de servicios en móvil - layout vertical */
       .servicio-img-wrapper.large,
       .servicio-img-wrapper.small {
         width: 48%;
         min-width: 140px;
-        height: 220px;
+        height: 240px;
+      }
+      
+      .servicio-img-wrapper.large img,
+      .servicio-img-wrapper.small img {
+        object-fit: cover;
+        object-position: center top;
       }
       
       .seccion-modelos {
@@ -1096,8 +1137,15 @@
         gap: 15px;
       }
       
+      /* Ajuste de imágenes de modelos servicios en móvil - vertical */
       .modelo-servicio-img {
-        height: 180px;
+        width: 100%;
+        height: 200px;
+      }
+      
+      .modelo-servicio-img img {
+        object-fit: cover;
+        object-position: center top;
       }
       
       .modelo-servicio-content {
