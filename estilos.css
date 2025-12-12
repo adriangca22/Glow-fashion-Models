@@ -1466,10 +1466,11 @@ h2 {
 /* ===========================================
    17. LOGO FOOTER
    =========================================== */
+/* Para DESKTOP: logo alineado a la izquierda */
 .logo-footer {
-  margin: 15px 0 0 auto; /* <CHANGE> Corregido error de sintaxis */
   max-width: 150px;
   display: block;
+  margin: 15px 0 0 0; /* Cambiado de "auto" a "0" para alinear a la izquierda */
 }
 
 .logo-footer img {
@@ -1477,4 +1478,11 @@ h2 {
   height: auto;
   display: block;
   margin: 0;
+}
+
+/* Para MOBILE: logo centrado */
+@media (max-width: 768px) {
+  .logo-footer {
+    margin: 15px auto 0 auto; /* Centrado con auto en ambos lados */
+  }
 }
