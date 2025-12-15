@@ -1363,7 +1363,19 @@ h2 {
   .hero-scroll {
     bottom: 10px;
   }
-
+ @media (orientation: portrait) {
+    .hero::before {
+      background-size: contain;
+      background-position: center center;
+    }
+  }
+  
+  @media (orientation: landscape) {
+    .hero::before {
+      background-size: contain;
+      background-position: center center;
+    }
+  }
   .scroll-line {
     height: 50px;
   }
