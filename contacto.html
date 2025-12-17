@@ -151,17 +151,23 @@
       opacity: 0;
       transform: translateX(-20px);
       animation: fadeInLeft 0.8s ease-out forwards;
+      cursor: pointer;
     }
     
     .contact-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 1.2s ease;
+      filter: grayscale(100%);
+      transition: transform 1.2s ease, filter 1.2s ease;
     }
     
     .contact-image:hover img {
       transform: scale(1.03);
+    }
+    
+    .contact-image.color-active img {
+      filter: grayscale(0%);
     }
     
     .contact-info-box, .contact-form {
@@ -900,6 +906,13 @@
         });
       } else {
         console.error('No se encontraron elementos del menú móvil');
+      }
+
+      const contactImage = document.querySelector('.contact-image');
+      if (contactImage) {
+        contactImage.addEventListener('click', function() {
+          this.classList.toggle('color-active');
+        });
       }
       
       // Script para el formulario (manteniendo tu código original)
